@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد مدیریت و رصد عملیات صفر هزینه «سیم و سنگ» | Sim & Sang OS Dashboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
+        body { background: #030509; color: #f8fafc; padding: 40px 60px; line-height: 1.8; }
+        @media (max-width: 768px) { body { padding: 20px; } }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #00A99D; padding-bottom: 20px; margin-bottom: 30px; flex-wrap: wrap; gap: 16px; }
+        .badge { background: #00A99D; color: #000; padding: 6px 16px; border-radius: 20px; font-weight: 900; font-size: 13px; }
+        .card { background: #0a101d; border: 1px solid rgba(0, 169, 157, 0.3); border-radius: 24px; padding: 30px; margin-bottom: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+        h2 { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        table { width: 100%; border-collapse: collapse; text-align: right; margin-top: 14px; font-size: 14px; }
+        th { background: #0f182c; padding: 14px 12px; color: #00A99D; font-weight: 900; border-bottom: 2px solid #00A99D; }
+        .btn-live { background: linear-gradient(135deg, #00A99D, #ffd700); color: #000; font-weight: 900; padding: 12px 24px; border-radius: 20px; text-decoration: none; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <h1 style="font-size: 32px; font-weight: 900; color: #fff;">🏛️ مرکز کنترل و داشبورد عملیاتی «سیم و سنگ» (Sim & Sang OS)</h1>
+            <p style="color: #94a3b8; font-size: 14px; margin-top: 6px;">مدیریت صفر هزینه ($0 Budget) توسط مدیر پروژه و تیم ایجنت‌های خودمختار پایتون</p>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <span class="badge">● 100% OPERATIONAL & LIVE</span>
+            <a href="index.html" class="btn-live">🛍️ ورود به فروشگاه اصلی ←</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📊 جدول استعلام و قیمت‌گذاری زنده محصولات (تومان / دلار / درهم)</h2>
+        <p style="color: #94a3b8; font-size: 13px;">تمامی قیمت‌ها بر اساس وزن خالص نقره، ضریب روزانه ادمین و دیتابیس ۱۱ گوهر اصیل محاسبه شده و بدون ۱ ریال هزینه سرور در دیتابیس محلی ذخیره شده است:</p>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr><th>کد شناسه (SKU)</th><th>نام محصول در کاتالوگ فارسی</th><th>وزن نقره و گوهر</th><th>قیمت بازار داخلی (تومان)</th><th>قیمت صادراتی خلیج فارس (USD / AED)</th></tr>
+                </thead>
+                <tbody>
+            <tr style="border-bottom: 1px solid #1e293b;">
+                <td style="padding: 12px; font-weight: bold; color: #00f0ff;">RING-001</td>
+                <td style="padding: 12px; color: #fff;">انگشتر نقره دست‌ساز فیروزه شجری نیشابور اصیل</td>
+                <td style="padding: 12px; color: #94a3b8;">19.2g (turquoise_neyshabur)</td>
+                <td style="padding: 12px; font-weight: bold; color: #34d399;">14,360,000 تومان</td>
+                <td style="padding: 12px; font-weight: bold; color: #ffd700;">$380.0 USD (1390.0 AED)</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #1e293b;">
+                <td style="padding: 12px; font-weight: bold; color: #00f0ff;">RING-002</td>
+                <td style="padding: 12px; color: #fff;">انگشتر نقره رکاب آیینه‌ای با عقیق سرخ آبدار یمانی</td>
+                <td style="padding: 12px; color: #94a3b8;">17.8g (agate_yemen)</td>
+                <td style="padding: 12px; font-weight: bold; color: #34d399;">12,830,000 تومان</td>
+                <td style="padding: 12px; font-weight: bold; color: #ffd700;">$340.0 USD (1250.0 AED)</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #1e293b;">
+                <td style="padding: 12px; font-weight: bold; color: #00f0ff;">RING-003</td>
+                <td style="padding: 12px; color: #fff;">انگشتر نقره شرف‌الشمس با حکاکی حرز مقدس ۱۹ فروردین</td>
+                <td style="padding: 12px; color: #94a3b8;">16.5g (sharaf_shams)</td>
+                <td style="padding: 12px; font-weight: bold; color: #34d399;">11,660,000 تومان</td>
+                <td style="padding: 12px; font-weight: bold; color: #ffd700;">$310.0 USD (1140.0 AED)</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #1e293b;">
+                <td style="padding: 12px; font-weight: bold; color: #00f0ff;">RING-004</td>
+                <td style="padding: 12px; color: #fff;">انگشتر نقره اشرافی با نگین زمرد پنجشیر و مخراج‌کاری برلیان</td>
+                <td style="padding: 12px; color: #94a3b8;">21.0g (emerald_panjshir)</td>
+                <td style="padding: 12px; font-weight: bold; color: #34d399;">16,100,000 تومان</td>
+                <td style="padding: 12px; font-weight: bold; color: #ffd700;">$425.0 USD (1560.0 AED)</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #1e293b;">
+                <td style="padding: 12px; font-weight: bold; color: #00f0ff;">RING-005</td>
+                <td style="padding: 12px; color: #fff;">انگشتر نقره دست‌ساز با سنگ در نجف شفاف و تراش دامله</td>
+                <td style="padding: 12px; color: #94a3b8;">18.0g (durr_najaf)</td>
+                <td style="padding: 12px; font-weight: bold; color: #34d399;">12,810,000 تومان</td>
+                <td style="padding: 12px; font-weight: bold; color: #ffd700;">$340.0 USD (1250.0 AED)</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #1e293b;">
+                <td style="padding: 12px; font-weight: bold; color: #00f0ff;">RING-006</td>
+                <td style="padding: 12px; color: #fff;">انگشتر نقره سلطنتی با نگین یاقوت کبود معدنی و رکاب خطی</td>
+                <td style="padding: 12px; color: #94a3b8;">19.8g (sapphire)</td>
+                <td style="padding: 12px; font-weight: bold; color: #34d399;">17,070,000 تومان</td>
+                <td style="padding: 12px; font-weight: bold; color: #ffd700;">$450.0 USD (1650.0 AED)</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #1e293b;">
+                <td style="padding: 12px; font-weight: bold; color: #00f0ff;">RING-007</td>
+                <td style="padding: 12px; color: #fff;">انگشتر نقره دست‌ساز یاقوت سرخ برمه با چنگ‌کاری سنتی</td>
+                <td style="padding: 12px; color: #94a3b8;">20.5g (ruby_burma)</td>
+                <td style="padding: 12px; font-weight: bold; color: #34d399;">16,300,000 تومان</td>
+                <td style="padding: 12px; font-weight: bold; color: #ffd700;">$430.0 USD (1580.0 AED)</td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #1e293b;">
+                <td style="padding: 12px; font-weight: bold; color: #00f0ff;">RING-008</td>
+                <td style="padding: 12px; color: #fff;">انگشتر نقره مینیمال با سنگ یشم سبز سلطنتی</td>
+                <td style="padding: 12px; color: #94a3b8;">15.5g (jade)</td>
+                <td style="padding: 12px; font-weight: bold; color: #34d399;">11,340,000 تومان</td>
+                <td style="padding: 12px; font-weight: bold; color: #ffd700;">$300.0 USD (1100.0 AED)</td>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📜 لاگ عملیاتی ایجنت‌ها و چک‌این روزانه تلگرام (HITL Audit Trail)</h2>
+        <div style="background: #020408; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; max-height: 250px; overflow-y: auto;">
+            <div style="margin-bottom: 8px; font-family: monospace; font-size: 12px;"><span style="color: #64748b;">[2026-07-05 23:03:26]</span> <strong style="color: #00f0ff;">INVENTORY_SYNC:</strong> <span style="color: #e2e8f0;">Successfully synchronized 8 luxury SKU prices across SQLite DB, Etsy GCC, and domestic Toman store.</span></div><div style="margin-bottom: 8px; font-family: monospace; font-size: 12px;"><span style="color: #64748b;">[2026-07-05 23:03:26]</span> <strong style="color: #00f0ff;">HITL_CHECKIN:</strong> <span style="color: #e2e8f0;">Admin updated silver multipliers: Standard=670,000 | Large=600,000</span></div>
+        </div>
+    </div>
+
+    <footer style="text-align: center; color: #64748b; font-size: 13px; padding-top: 20px;">
+        © ۱۴۰۵ پروژه سیم و سنگ | پیاده‌سازی‌شده با هزینه صفر توسط مدیر پروژه هوش مصنوعی | میزبانی رایگان روی GitHub Pages SSL Edge
+    </footer>
+</body>
+</html>
