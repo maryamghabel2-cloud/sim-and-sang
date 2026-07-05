@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گالری نقره و جواهرات سلطنتی «سیم و سنگ» (Sim & Sang) | اصالت مشهد و نیشابور</title>
+    <!-- GSAP & Confetti -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=Amiri:wght@700&display=swap');
+        
+        :root {
+            --bg: #030509;
+            --surface: #0a101d;
+            --surface-card: #0f182c;
+            --silver: #e2e8f0;
+            --silver-glow: rgba(226, 232, 240, 0.35);
+            --turquoise: #00A99D; /* فیروزه اصیل نیشابور */
+            --turquoise-glow: rgba(0, 169, 157, 0.4);
+            --agate-red: #dc2626; /* عقیق یمانی */
+            --sharaf-yellow: #f59e0b;
+            --gold: #D4AF37;
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(226, 232, 240, 0.2);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --font-fa: 'Vazirmatn', Tahoma, IRANSans, sans-serif;
+            --font-serif: 'Amiri', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-fa); }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 15%, rgba(0, 169, 157, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(220, 38, 38, 0.1) 0%, transparent 45%);
+            background-attachment: fixed;
+            line-height: 1.8;
+        }
+
+        /* Top Royal Banner */
+        .top-banner {
+            background: linear-gradient(90deg, #030509, #00332f, #1f0b12, #030509);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 24px; font-size: 13px; font-weight: 800;
+            color: var(--silver); position: relative; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.8);
+        }
+        .banner-pulse { width: 8px; height: 8px; background: var(--turquoise); border-radius: 50%; box-shadow: 0 0 10px var(--turquoise); animation: ping 1.5s infinite; }
+        @keyframes ping { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+
+        /* Currency & Language Switcher */
+        .curr-switcher { display: flex; background: rgba(0,0,0,0.7); border: 1px solid var(--border-light); border-radius: 20px; padding: 3px; gap: 3px; }
+        .curr-btn { background: transparent; border: none; color: var(--text-muted); padding: 5px 12px; border-radius: 16px; font-size: 11px; font-weight: 900; cursor: pointer; transition: all 0.3s; }
+        .curr-btn.active { background: var(--turquoise); color: #000; box-shadow: 0 0 15px var(--turquoise-glow); }
+
+        /* Navbar */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 60px; background: rgba(3, 5, 9, 0.92);
+            backdrop-filter: blur(25px); border-bottom: 1px solid var(--border-light);
+            position: sticky; top: 0; z-index: 90; flex-wrap: wrap; gap: 20px;
+        }
+        @media (max-width: 900px) { nav { padding: 16px 20px; flex-direction: column; gap: 14px; } }
+
+        .brand {
+            font-size: 28px; font-weight: 900;
+            background: linear-gradient(to left, #fff, var(--silver), var(--turquoise));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+        }
+        .brand-logo {
+            width: 50px; height: 50px; background: linear-gradient(135deg, #0a101d, #1e293b);
+            border: 1px solid var(--silver); border-radius: 16px; display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 900; font-size: 26px; box-shadow: 0 0 25px var(--silver-glow);
+        }
+
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 700; font-size: 15px; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--turquoise); }
+        @media (max-width: 800px) { .nav-links { display: none; } }
+
+        .btn-cart {
+            background: rgba(226, 232, 240, 0.12); border: 1px solid var(--silver);
+            color: #fff; font-weight: 800; font-size: 14px; padding: 12px 24px;
+            border-radius: 30px; cursor: pointer; transition: all 0.3s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .btn-cart:hover { background: var(--silver); color: #000; box-shadow: 0 0 25px var(--silver-glow); }
+        .cart-badge { background: var(--turquoise); color: #000; font-size: 12px; padding: 2px 8px; border-radius: 20px; font-weight: 900; }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 70px 60px 90px; max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.25fr 1fr; align-items: center; gap: 50px;
+        }
+        @media (max-width: 992px) { .hero { grid-template-columns: 1fr; text-align: center; padding: 40px 20px; } }
+
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0, 169, 157, 0.12); border: 1px solid var(--turquoise);
+            color: var(--turquoise); padding: 8px 20px; border-radius: 30px;
+            font-size: 13px; font-weight: 800; margin-bottom: 22px;
+        }
+        h1 { font-size: 54px; font-weight: 900; line-height: 1.18; margin-bottom: 20px; }
+        @media (max-width: 768px) { h1 { font-size: 36px; } }
+        h1 span.highlight {
+            background: linear-gradient(135deg, #fff, var(--silver), var(--turquoise));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 35px rgba(226, 232, 240, 0.35);
+        }
+        p.lead { font-size: 18px; color: var(--text-muted); max-width: 620px; margin-bottom: 34px; }
+        @media (max-width: 992px) { p.lead { margin: 0 auto 34px; } }
+
+        .slogan-box { background: rgba(255, 255, 255, 0.04); border-right: 4px solid var(--turquoise); padding: 12px 18px; border-radius: 12px; font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 28px; display: inline-block; }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--silver), #94a3b8);
+            color: #000; font-weight: 900; font-size: 16px; padding: 16px 36px;
+            border-radius: 30px; border: none; cursor: pointer; text-decoration: none;
+            box-shadow: 0 0 35px var(--silver-glow); transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px;
+        }
+        .btn-primary:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 0 50px var(--silver); }
+
+        /* Hero Ring Showcase Card */
+        .hero-card-3d {
+            background: var(--surface); border: 2px solid var(--silver);
+            border-radius: 32px; padding: 26px; backdrop-filter: blur(25px);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.9), 0 0 40px var(--silver-glow);
+            position: relative; overflow: hidden; text-align: center;
+        }
+        .svg-hero-wrap { width: 100%; height: 340px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, rgba(0, 169, 157, 0.2) 0%, #030509 70%); border-radius: 20px; margin-bottom: 18px; border: 1px solid rgba(255,255,255,0.05); }
+
+        /* INTERACTIVE MASHHAD DELIVERY TIME & BUNDLED SHIPPING ESTIMATOR */
+        .shipping-section { max-width: 1350px; margin: 0 auto 80px; padding: 0 24px; }
+        .shipping-box {
+            background: linear-gradient(135deg, #0a101d, #002b28);
+            border: 2px solid var(--turquoise); border-radius: 36px; padding: 40px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 40px var(--turquoise-glow);
+        }
+        .shipping-title { font-size: 26px; font-weight: 900; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .shipping-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 24px; }
+        
+        .shipping-grid { display: grid; grid-template-columns: 1.5fr 1.5fr 1fr; gap: 20px; align-items: center; }
+        @media (max-width: 800px) { .shipping-grid { grid-template-columns: 1fr; } }
+        
+        .form-select { width: 100%; padding: 16px 20px; background: rgba(0,0,0,0.6); border: 1px solid var(--border-light); border-radius: 16px; color: #fff; font-size: 15px; font-weight: 700; outline: none; cursor: pointer; }
+        .form-select:focus { border-color: var(--turquoise); }
+        .form-select option { background: #0a101d; color: #fff; padding: 10px; }
+
+        .ship-result-box { background: rgba(0,0,0,0.6); border: 1px solid var(--border); border-radius: 20px; padding: 18px 24px; }
+        .ship-val { font-size: 20px; font-weight: 900; color: #34d399; margin-top: 4px; }
+
+        /* 11-GEMSTONE FILTER TABS */
+        .filter-section { max-width: 1350px; margin: 0 auto 50px; padding: 0 24px; }
+        .filter-box { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; background: rgba(10, 16, 29, 0.8); border: 1px solid var(--border-light); border-radius: 36px; padding: 14px; backdrop-filter: blur(20px); }
+        .filter-btn { background: rgba(255,255,255,0.04); border: 1px solid var(--border-light); color: var(--text-muted); padding: 10px 20px; border-radius: 24px; font-weight: 800; font-size: 13px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 6px; }
+        .filter-btn:hover, .filter-btn.active { background: var(--silver); color: #000; box-shadow: 0 0 20px var(--silver-glow); border-color: #fff; }
+
+        /* PRODUCTS GRID SECTION */
+        .store-section { max-width: 1350px; margin: 0 auto 90px; padding: 0 24px; }
+        .store-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; border-bottom: 1px solid var(--border-light); padding-bottom: 20px; flex-wrap: wrap; gap: 20px; }
+        
+        .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        @media (max-width: 992px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .products-grid { grid-template-columns: 1fr; } }
+
+        .product-card {
+            background: var(--surface-card); border: 1px solid var(--border-light); border-radius: 28px;
+            padding: 24px; position: relative; overflow: hidden; transition: all 0.3s;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .product-card:hover { border-color: var(--silver); transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0,0,0,0.8), 0 0 35px var(--silver-glow); }
+        .prod-img-wrap { width: 100%; height: 250px; border-radius: 20px; overflow: hidden; margin-bottom: 16px; position: relative; background: #030509; display: flex; align-items: center; justify-content: center; }
+        
+        .weight-badge { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.85); border: 1px solid var(--silver); color: var(--silver); padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; z-index: 10; }
+        .gem-tag { position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.85); border: 1px solid var(--turquoise); color: var(--turquoise); padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 800; z-index: 10; }
+
+        .prod-title { font-size: 19px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+        .prod-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
+        
+        .prod-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); padding-top: 16px; }
+        .old-price { font-size: 13px; color: var(--text-muted); text-decoration: line-through; }
+        .new-price { font-size: 22px; font-weight: 900; color: #fff; }
+        .new-price span { font-size: 13px; font-weight: 700; color: var(--turquoise); }
+
+        .btn-add {
+            background: rgba(0, 169, 157, 0.15); border: 1px solid var(--turquoise); color: var(--turquoise);
+            font-weight: 800; font-size: 13px; padding: 12px 20px; border-radius: 20px; cursor: pointer; transition: all 0.3s;
+        }
+        .btn-add:hover { background: var(--turquoise); color: #000; box-shadow: 0 0 20px var(--turquoise-glow); }
+
+        /* SMART RING SIZE & ENGRAVING CONFIGURATOR */
+        .config-section { max-width: 1350px; margin: 0 auto 90px; padding: 0 24px; }
+        .config-box { background: var(--surface); border: 1px solid var(--border); border-radius: 36px; padding: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        @media (max-width: 900px) { .config-box { grid-template-columns: 1fr; text-align: center; } }
+        .calc-slider { width: 100%; height: 10px; background: #020b09; border-radius: 10px; outline: none; margin: 20px 0; accent-color: var(--turquoise); cursor: pointer; }
+        .engrave-input { width: 100%; padding: 16px; background: rgba(0,0,0,0.6); border: 1px solid var(--turquoise); border-radius: 16px; color: var(--turquoise); font-size: 16px; font-weight: 800; text-align: center; outline: none; margin-top: 10px; }
+
+        /* SHOPPING CART SIDEBAR MODAL */
+        .cart-overlay { position: fixed; top: 0; right: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); display: none; justify-content: flex-start; z-index: 1000; }
+        .cart-sidebar { width: 440px; max-width: 100%; height: 100vh; background: #080d1a; border-left: 2px solid var(--turquoise); padding: 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: -20px 0 60px rgba(0,0,0,0.9); }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 14px; }
+
+        /* TOAST NOTIFICATION */
+        #toast { position: fixed; bottom: 30px; left: 30px; background: rgba(0, 169, 157, 0.95); color: #000; padding: 16px 26px; border-radius: 20px; font-weight: 900; font-size: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; gap: 10px; border: 1px solid #fff; }
+
+        /* Footer */
+        footer { padding: 60px 40px; background: #020408; border-top: 1px solid var(--border-light); text-align: center; color: var(--text-muted); font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <!-- Top Royal Banner -->
+    <div class="top-banner">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="banner-pulse"></span>
+            <span>👑 گالری نقره و جواهرات «سیم و سنگ» (Sim & Sang) | مستقر در مشهد مقدس؛ مهد هنر سیاه‌قلم و فیروزه نیشابور ایران</span>
+        </div>
+        
+        <!-- Multi-Currency Switcher -->
+        <div class="curr-switcher">
+            <button class="curr-btn active" id="curr-irt" onclick="switchCurrency('irt')">🇮🇷 تومان (IRR)</button>
+            <button class="curr-btn" id="curr-aed" onclick="switchCurrency('aed')">🇦🇪 درهم (AED)</button>
+            <button class="curr-btn" id="curr-usd" onclick="switchCurrency('usd')">🇺🇸 دلار (USD)</button>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#" class="brand">
+            <div class="brand-logo">💍</div>
+            <span>گالری سیم و سنگ | SIM & SANG</span>
+        </a>
+        
+        <ul class="nav-links">
+            <li><a href="#store" class="active">فیروزه نیشابور</a></li>
+            <li><a href="#store">عقیق یمانی سرخ</a></li>
+            <li><a href="#store">شرف‌الشمس و زمرد</a></li>
+            <li><a href="#shipping-calc">زمان‌بندی ارسال از مشهد</a></li>
+            <li><a href="#size-calc">تعیین سایز و حکاکی</a></li>
+        </ul>
+
+        <button class="btn-cart" onclick="openCart()">
+            <span>🛒 سبد جواهرات</span>
+            <span class="cart-badge" id="cart-count">۰</span>
+        </button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div>
+            <div class="hero-tag">✨ اصالت مشهد، هنر قلم‌زنی و سنگ معدنی نیشابور</div>
+            <h1>کلکسیون سلطنتی <br><span class="highlight">انگشترهای نقره «سیم و سنگ»</span></h1>
+            <div class="slogan-box">«ارسال رایگان بیمه‌شده به سراسر ایران و جهان؛ لحاظ‌شده در قیمت»</div>
+            <p class="lead">عرضه بی‌واسطه نفیس‌ترین انگشترهای نقره ۹۲۵ عیار دست‌ساز با رکاب‌های سیاه‌قلم و خطی استادکاران مشهد و زنجان، نگین‌های فیروزه شجری نیشابور، عقیق یمانی، زمرد، یاقوت و در نجف با ضمانت مادام‌العمر اصالت.</p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <a href="#store" class="btn-primary">💍 مشاهده ویترین انگشترها ←</a>
+                <a href="#shipping-calc" style="background: rgba(255,255,255,0.06); border: 1px solid var(--border-light); color: #fff; padding: 16px 28px; border-radius: 30px; text-decoration: none; font-weight: 800; font-size: 15px; display: inline-flex; align-items: center; gap: 8px;">✈️ محاسبه زمان تحویل از مشهد</a>
+            </div>
+        </div>
+
+        <div class="hero-card-3d" id="tilt-card">
+            <span style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.85); border: 1px solid var(--silver); color: var(--silver); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 900;">👑 شاهکار دست‌ساز مشهد</span>
+            <div class="svg-hero-wrap">
+                <!-- High-tech 3D Vector Ring Illustration -->
+                <svg viewBox="0 0 200 200" width="220" height="220">
+                    <path d="M 50 110 Q 50 180 100 180 Q 150 180 150 110 L 135 100 Q 135 155 100 155 Q 65 155 65 100 Z" fill="url(#silverGrad)" stroke="#cbd5e1" stroke-width="2"/>
+                    <path d="M 60 120 Q 80 140 100 140 Q 120 140 140 120" fill="none" stroke="#64748b" stroke-width="3" stroke-dasharray="4 2"/>
+                    <polygon points="65,95 75,70 85,95" fill="#94a3b8"/>
+                    <polygon points="135,95 125,70 115,95" fill="#94a3b8"/>
+                    <polygon points="90,98 100,68 110,98" fill="#cbd5e1"/>
+                    <ellipse cx="100" cy="72" rx="36" ry="24" fill="url(#turqGrad)" stroke="#D4AF37" stroke-width="3"/>
+                    <path d="M 80 68 Q 95 75 115 65 M 88 78 Q 105 70 120 76" fill="none" stroke="#030509" stroke-width="2"/>
+                    <circle cx="90" cy="65" r="4" fill="rgba(255,255,255,0.6)"/>
+                    <defs>
+                        <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#f8fafc"/><stop offset="50%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#475569"/>
+                        </linearGradient>
+                        <linearGradient id="turqGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#5eead4"/><stop offset="50%" stop-color="#00A99D"/><stop offset="100%" stop-color="#0f766e"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div style="font-size: 22px; font-weight: 900; color: #fff;">انگشتر نقره دست‌ساز فیروزه شجری نیشابور</div>
+            <div style="font-size: 13px; color: var(--text-muted); margin: 6px 0 16px;">رکاب سیاه‌قلم استادکاری مشهد • نقره ۹۲۵ عیار سنگین (۲۱ گرم)</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+                <span style="font-size: 22px; font-weight: 900; color: var(--turquoise);" id="hero-price-text">۴,۸۵۰,۰۰۰ <span>تومان</span></span>
+                <button class="btn-cart" style="background: var(--turquoise); color: #000;" onclick="addToCart('انگشتر فیروزه شجری نیشابور', currentPrices[0])">🛒 افزودن فوری به سبد</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- INTERACTIVE MASHHAD DELIVERY TIME & BUNDLED SHIPPING ESTIMATOR -->
+    <section class="shipping-section" id="shipping-calc">
+        <div class="shipping-box">
+            <div class="shipping-title">✈️ محاسبه‌گر آنلاین زمان تحویل مرسولات از مبدأ کارگاه مشهد مقدس</div>
+            <div class="shipping-sub">شهر یا کشور مقصد خود را انتخاب کنید تا زمان دقیق تحویل و پوشش بیمه‌ای نمایش داده شود (هزینه ارسال رایگان و از قبل در قیمت لحاظ شده است):</div>
+            
+            <div class="shipping-grid">
+                <div>
+                    <label style="font-size: 14px; font-weight: 800; color: #fff; display: block; margin-bottom: 8px;">۱. انتخاب شهر یا کشور مقصد مرسوله:</label>
+                    <select class="form-select" id="dest-select" onchange="calcShipping()">
+                        <option value="mashhad">📍 شهر مشهد (محل گالری و کارگاه سیاه‌قلم)</option>
+                        <option value="tehran">📍 کلان‌شهر تهران و مراکز استان‌های ایران</option>
+                        <option value="other_iran" selected>📍 سایر شهرستان‌ها و شهرهای سراسر ایران</option>
+                        <option value="gcc">✈️ کشورهای عربی خلیج فارس (امارات، قطر، کویت، عمان)</option>
+                        <option value="europe">✈️ ترکیه، عراق، اتحادیه اروپا و آمریکای شمالی</option>
+                    </select>
+                </div>
+
+                <div class="ship-result-box">
+                    <div style="font-size: 13px; color: var(--text-muted);">زمان تقریبی تحویل (Estimated Delivery):</div>
+                    <div class="ship-val" id="ship-time-val">۴۸ تا ۷۲ ساعت (۲ تا ۳ روز کاری)</div>
+                    <div style="font-size: 12px; color: #fff; margin-top: 4px;" id="ship-method-val">روش ارسال: پست پیشتاز ثبتی بیمه‌شده</div>
+                </div>
+
+                <div class="ship-result-box" style="border-color: var(--turquoise); background: rgba(0, 169, 157, 0.1);">
+                    <div style="font-size: 13px; color: var(--text-muted);">هزینه پست و بیمه اصالت:</div>
+                    <div class="ship-val" style="color: #fff;">رایگان (۱۰۰٪)</div>
+                    <div style="font-size: 11px; color: var(--turquoise); margin-top: 4px;">✔ از قبل در قیمت انگشتر لحاظ شده است</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11-GEMSTONE FILTER TABS -->
+    <section class="filter-section" id="store">
+        <div class="filter-box">
+            <button class="filter-btn active" onclick="filterGem('all', this)">✨ تمام ۱۱ گوهر معدنی</button>
+            <button class="filter-btn" onclick="filterGem('turquoise', this)">🩵 فیروزه نیشابور</button>
+            <button class="filter-btn" onclick="filterGem('agate', this)">🔴 عقیق یمانی سرخ و سیاه</button>
+            <button class="filter-btn" onclick="filterGem('sharaf', this)">💛 عقیق زرد شرف‌الشمس</button>
+            <button class="filter-btn" onclick="filterGem('emerald', this)">💚 زمرد پنجشیر و زبرجد</button>
+            <button class="filter-btn" onclick="filterGem('najaf', this)">⚪ در نجف و الکساندریت</button>
+            <button class="filter-btn" onclick="filterGem('sapphire', this)">💙 یاقوت کبود، سرخ و سیترین</button>
+            <button class="filter-btn" onclick="filterGem('amethyst', this)">💜 آمیتیست، یشم و لاجورد</button>
+        </div>
+    </section>
+
+    <!-- PRODUCTS GRID SECTION -->
+    <section class="store-section">
+        <div class="store-header">
+            <div>
+                <h2 style="font-size: 34px; font-weight: 900;">ویترین انگشترهای نقره ۹۲۵ عیار دست‌ساز مشهد</h2>
+                <p style="color: var(--text-muted); font-size: 15px;">تمامی سنگ‌ها ۱۰۰٪ طبیعی و معدنی بوده و با شناسنامه کتبی اصالت و جعبه چوبی لوکس ارسال می‌شوند</p>
+            </div>
+            <div style="font-size: 14px; font-weight: 800; color: var(--turquoise);">● ارسال رایگان و بیمه‌شده از مبدأ مشهد به سراسر کشور و جهان</div>
+        </div>
+
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-gem="turquoise">
+                <div class="prod-img-wrap">
+                    <span class="weight-badge">⚖️ وزن: ۱۹.۲ گرم</span>
+                    <span class="gem-tag">🩵 فیروزه نیشابور شجری</span>
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+                        <svg viewBox="0 0 150 150" width="130" height="130">
+                            <path d="M 30 80 Q 30 130 75 130 Q 120 130 120 80 L 105 70 Q 105 110 75 110 Q 45 110 45 70 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+                            <ellipse cx="75" cy="55" rx="30" ry="20" fill="#00A99D" stroke="#D4AF37" stroke-width="3"/>
+                            <path d="M 60 50 Q 75 58 90 48 M 65 60 Q 80 52 95 58" fill="none" stroke="#030509" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="prod-title">انگشتر نقره دست‌ساز فیروزه شجری نیشابور اصیل</h3>
+                <p class="prod-desc">رکاب سیاه‌قلم استادکاری مشهد با عیار ۹۲۵ سنگین؛ نگین فیروزه شجری پررنگ نیشابور با شناسنامه معتبر و طبع زنده.</p>
+                <div class="prod-footer">
+                    <div>
+                        <div class="old-price old-price-text">۵,۲۰۰,۰۰۰ تومان</div>
+                        <div class="new-price prod-price-text">۴,۴۵۰,۰۰۰ <span>تومان</span></div>
+                    </div>
+                    <button class="btn-add" onclick="addToCart('انگشتر فیروزه شجری نیشابور', currentPrices[0])">🛒 افزودن به سبد</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-gem="agate">
+                <div class="prod-img-wrap">
+                    <span class="weight-badge" style="border-color: #ef4444;">⚖️ وزن: ۱۷.۸ گرم</span>
+                    <span class="gem-tag" style="border-color: #ef4444; color: #ef4444;">🔴 عقیق سرخ یمانی</span>
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+                        <svg viewBox="0 0 150 150" width="130" height="130">
+                            <path d="M 30 80 Q 30 130 75 130 Q 120 130 120 80 L 105 70 Q 105 110 75 110 Q 45 110 45 70 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+                            <ellipse cx="75" cy="55" rx="30" ry="20" fill="#dc2626" stroke="#D4AF37" stroke-width="3"/>
+                            <circle cx="65" cy="50" r="4" fill="rgba(255,255,255,0.5)"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="prod-title">انگشتر نقره رکاب آیینه‌ای با عقیق سرخ آبدار یمانی</h3>
+                <p class="prod-desc">رکاب آیینه‌ای و چنگ‌دار دست‌ساز با پرداخت بی‌نقص؛ نگین عقیق سرخ طبیعی یمن با آبداری عالی و تراش تخت سنتی.</p>
+                <div class="prod-footer">
+                    <div>
+                        <div class="old-price old-price-text">۳,۸۰۰,۰۰۰ تومان</div>
+                        <div class="new-price prod-price-text">۳,۲۵۰,۰۰۰ <span>تومان</span></div>
+                    </div>
+                    <button class="btn-add" onclick="addToCart('انگشتر عقیق سرخ یمانی', currentPrices[1])">🛒 افزودن به سبد</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-gem="sharaf">
+                <div class="prod-img-wrap">
+                    <span class="weight-badge" style="border-color: var(--gold); color: var(--gold);">⚖️ وزن: ۱۶.۵ گرم</span>
+                    <span class="gem-tag" style="border-color: var(--gold); color: var(--gold);">💛 عقیق زرد شرف‌الشمس</span>
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+                        <svg viewBox="0 0 150 150" width="130" height="130">
+                            <path d="M 30 80 Q 30 130 75 130 Q 120 130 120 80 L 105 70 Q 105 110 75 110 Q 45 110 45 70 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+                            <ellipse cx="75" cy="55" rx="30" ry="20" fill="#f59e0b" stroke="#D4AF37" stroke-width="3"/>
+                            <text x="75" y="60" fill="#78350f" font-size="12" font-weight="bold" text-anchor="middle">شرف‌الشمس</text>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="prod-title">انگشتر نقره شرف‌الشمس با حکاکی حرز مقدس ۱۹ فروردین</h3>
+                <p class="prod-desc">نگین عقیق زرد طبیعی با حکاکی حرز مقدس شرف‌الشمس؛ رکاب نقره ۹۲۵ عیار طرح صفوی با سیاه‌قلم سنتی مشهد.</p>
+                <div class="prod-footer">
+                    <div>
+                        <div class="old-price old-price-text">۳,۴۰۰,۰۰۰ تومان</div>
+                        <div class="new-price prod-price-text">۲,۸۹۰,۰۰۰ <span>تومان</span></div>
+                    </div>
+                    <button class="btn-add" onclick="addToCart('انگشتر شرف‌الشمس صفوی', currentPrices[2])">🛒 افزودن به سبد</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-gem="emerald">
+                <div class="prod-img-wrap">
+                    <span class="weight-badge" style="border-color: #10b981; color: #34d399;">⚖️ وزن: ۲۱.۰ گرم</span>
+                    <span class="gem-tag" style="border-color: #10b981; color: #34d399;">💚 زمرد پنجشیر طبیعی</span>
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+                        <svg viewBox="0 0 150 150" width="130" height="130">
+                            <path d="M 30 80 Q 30 130 75 130 Q 120 130 120 80 L 105 70 Q 105 110 75 110 Q 45 110 45 70 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+                            <polygon points="75,30 105,55 90,85 60,85 45,55" fill="#10b981" stroke="#D4AF37" stroke-width="3"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="prod-title">انگشتر نقره اشرافی با نگین زمرد پنجشیر و مخراج‌کاری برلیان</h3>
+                <p class="prod-desc">رکاب سنگین و سلطنتی با مخراج‌کاری ۱۲ قطعه برلیان اتمی در اطراف؛ نگین زمرد طبیعی پنجشیر با رنگ سبز خوش‌طبع.</p>
+                <div class="prod-footer">
+                    <div>
+                        <div class="old-price old-price-text">۷,۵۰۰,۰۰۰ تومان</div>
+                        <div class="new-price prod-price-text">۶,۴۰۰,۰۰۰ <span>تومان</span></div>
+                    </div>
+                    <button class="btn-add" onclick="addToCart('انگشتر زمرد پنجشیر سلطنتی', currentPrices[3])">🛒 افزودن به سبد</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-gem="najaf">
+                <div class="prod-img-wrap">
+                    <span class="weight-badge">⚖️ وزن: ۱۸.۰ گرم</span>
+                    <span class="gem-tag" style="color: #fff; border-color: #fff;">⚪ در نجف شفاف طبیعی</span>
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+                        <svg viewBox="0 0 150 150" width="130" height="130">
+                            <path d="M 30 80 Q 30 130 75 130 Q 120 130 120 80 L 105 70 Q 105 110 75 110 Q 45 110 45 70 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+                            <ellipse cx="75" cy="55" rx="30" ry="20" fill="rgba(255,255,255,0.85)" stroke="#D4AF37" stroke-width="3"/>
+                            <circle cx="68" cy="50" r="5" fill="#fff"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="prod-title">انگشتر نقره دست‌ساز با سنگ در نجف شفاف و تراش دامله</h3>
+                <p class="prod-desc">سنگ در نجف طبیعی بسیار شفاف و پرانرژی؛ رکاب نقره ۹۲۵ عیار چنگ‌دار با پرداخت آیینه‌ای و دوام بالا.</p>
+                <div class="prod-footer">
+                    <div>
+                        <div class="old-price old-price-text">۴,۲۰۰,۰۰۰ تومان</div>
+                        <div class="new-price prod-price-text">۳,۶۵۰,۰۰۰ <span>تومان</span></div>
+                    </div>
+                    <button class="btn-add" onclick="addToCart('انگشتر در نجف طبیعی', currentPrices[4])">🛒 افزودن به سبد</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-gem="sapphire">
+                <div class="prod-img-wrap">
+                    <span class="weight-badge" style="border-color: #3b82f6; color: #60a5fa;">⚖️ وزن: ۱۹.۸ گرم</span>
+                    <span class="gem-tag" style="border-color: #3b82f6; color: #60a5fa;">💙 یاقوت کبود (سافایر)</span>
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+                        <svg viewBox="0 0 150 150" width="130" height="130">
+                            <path d="M 30 80 Q 30 130 75 130 Q 120 130 120 80 L 105 70 Q 105 110 75 110 Q 45 110 45 70 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+                            <polygon points="75,25 105,55 75,85 45,55" fill="#1e3a8a" stroke="#D4AF37" stroke-width="3"/>
+                            <circle cx="65" cy="50" r="3" fill="rgba(255,255,255,0.6)"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="prod-title">انگشتر نقره سلطنتی با نگین یاقوت کبود معدنی و رکاب خطی</h3>
+                <p class="prod-desc">یاقوت کبود معدنی خوش‌رنگ؛ رکاب نقره سنگین با حکاکی خطی استادکاران مشهد و طرح‌های اسلیمی سنتی.</p>
+                <div class="prod-footer">
+                    <div>
+                        <div class="old-price old-price-text">۶,۸۰۰,۰۰۰ تومان</div>
+                        <div class="new-price prod-price-text">۵,۹۰۰,۰۰۰ <span>تومان</span></div>
+                    </div>
+                    <button class="btn-add" onclick="addToCart('انگشتر یاقوت کبود معدنی', currentPrices[5])">🛒 افزودن به سبد</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SMART RING SIZE & ENGRAVING CONFIGURATOR -->
+    <section class="config-section" id="size-calc">
+        <div class="config-box">
+            <div>
+                <span class="hero-tag">📐 تعیین سایز و قلم‌زنی اختصاصی</span>
+                <h2 style="font-size: 30px; font-weight: 900; color: #fff; margin-bottom: 10px;">محاسبه‌گر سایز و شبیه‌ساز حکاکی ذکر</h2>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">نوار کاغذی را دور انگشت بپیچید و طول آن را به میلی‌متر روی خط‌کش بخوانید. اهرم را روی عدد تنظیم کنید:</p>
+                
+                <div style="font-size: 18px; font-weight: 800; color: #fff;">دور انگشت شما: <span id="mm-val" style="color: var(--gold); font-size: 26px;">۶۲</span> میلی‌متر</div>
+                <input type="range" class="calc-slider" min="50" max="75" value="62" oninput="updateSize(this.value)">
+                
+                <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: 800; margin-top: 10px;">
+                    <span>سایز استاندارد ایرانی: <strong style="color: var(--turquoise);" id="iran-size">سایز ۶۲</strong></span>
+                    <span>معادل آمریکایی: <strong style="color: #fff;" id="us-size">US Size 10</strong></span>
+                </div>
+
+                <div style="margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 18px;">
+                    <label style="font-size: 14px; font-weight: 800; color: #fff;">✍️ متن دلخواه برای حکاکی قلم‌زنی داخل رکاب یا روی عقیق (رایگان):</label>
+                    <input type="text" class="engrave-input" id="engrave-input" value="یا علی بن ابی‌طالب (ع)" placeholder="متن یا نام خود را تایپ کنید..." oninput="document.getElementById('live-engrave-text').innerText = this.value || 'بدون حکاکی'">
+                </div>
+            </div>
+
+            <div style="text-align: center; background: rgba(0,0,0,0.6); border: 1px solid var(--gold); border-radius: 26px; padding: 30px;">
+                <div style="font-size: 14px; font-weight: 800; color: var(--gold); margin-bottom: 14px;">پیش‌نمایش زنده حکاکی روی عقیق یمانی:</div>
+                <div style="width: 200px; height: 140px; background: radial-gradient(circle, #dc2626 0%, #7f1d1d 80%); border: 4px solid var(--gold); border-radius: 50% 50% 40% 40%; margin: 0 auto; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(220,38,38,0.5);">
+                    <span id="live-engrave-text" style="font-family: var(--font-serif); font-size: 22px; font-weight: 900; color: var(--gold); text-shadow: 0 2px 4px rgba(0,0,0,0.8);">یا علی بن ابی‌طالب (ع)</span>
+                </div>
+                <div style="font-size: 13px; color: #34d399; margin-top: 18px; font-weight: 800;">
+                    ✅ حکاکی با قلم اسلیمی استادکاران مشهد به صورت رایگان انجام می‌شود!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOPPING CART SIDEBAR MODAL -->
+    <div class="cart-overlay" id="cart-modal" onclick="if(event.target===this) closeCart()">
+        <div class="cart-sidebar">
+            <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 20px;">
+                    <span style="font-size: 20px; font-weight: 900; color: var(--turquoise);">🛒 سبد جواهرات شما در سیم و سنگ</span>
+                    <button onclick="closeCart()" style="background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;">×</button>
+                </div>
+                <div id="cart-items-box" style="max-height: 55vh; overflow-y: auto; display: flex; flex-direction: column; gap: 12px;">
+                    <div style="color: var(--text-muted); text-align: center; padding: 40px 0;">سبد خرید شما در حال حاضر خالی است.</div>
+                </div>
+            </div>
+            <div>
+                <div style="background: rgba(255,255,255,0.04); border: 1px solid var(--border-light); border-radius: 16px; padding: 16px; margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px;">
+                        <span>وضعیت ارز انتخابی:</span>
+                        <span style="color: var(--turquoise); font-weight: 800;" id="cart-curr-label">🇮🇷 تومان (IRR)</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px;">
+                        <span>ارسال بیمه‌شده از مبدأ مشهد:</span>
+                        <span style="color: #34d399; font-weight: 800;">رایگان (لحاظ‌شده در قیمت)</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: 900; color: #fff; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8px;">
+                        <span>مبلغ نهایی پرداخت:</span>
+                        <span style="color: var(--turquoise);" id="cart-total-price">۰ <span>تومان</span></span>
+                    </div>
+                </div>
+                <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="checkout()">
+                    🚀 استعلام موجودی و پرداخت امن (شتاب / USDT)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast">
+        <span>💍</span>
+        <span id="toast-msg">انگشتر به سبد خرید اضافه شد!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p style="font-size: 24px; color: #fff; font-weight: 900; margin-bottom: 10px;">گالری نقره و جواهرات سلطنتی «سیم و سنگ» | SIM & SANG ROYAL SILVER</p>
+        <p style="margin-bottom: 18px;">مستقر در مشهد مقدس؛ مهد هنر سیاه‌قلم، رکاب‌سازی و گوهرتراشی فیروزه نیشابور و عقیق در خاورمیانه</p>
+        <p style="color: var(--turquoise); font-weight: 800; margin-bottom: 20px;">«ارسال رایگان بیمه‌شده به سراسر ایران و جهان؛ لحاظ‌شده در قیمت»</p>
+        <p>© ۱۴۰۵ تمامی حقوق مادی و معنوی این وب‌سایت متعلق به گالری سیم و سنگ می‌باشد.</p>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // 1. Currency Switcher Logic (IRT / AED / USD)
+        const basePricesIRT = [4450000, 3250000, 2890000, 6400000, 3650000, 5900000];
+        const basePricesAED = [1350, 980, 880, 1950, 1100, 1780];
+        const basePricesUSD = [370, 270, 240, 530, 300, 490];
+        let currentPrices = [...basePricesIRT];
+        let currentCurr = 'irt';
+        let currUnit = 'تومان';
+
+        function switchCurrency(curr) {
+            currentCurr = curr;
+            document.querySelectorAll('.curr-btn').forEach(btn => btn.classList.remove('active'));
+            const priceTexts = document.querySelectorAll('.prod-price-text');
+            const oldTexts = document.querySelectorAll('.old-price-text');
+            const heroText = document.getElementById('hero-price-text');
+            
+            if (curr === 'irt') {
+                document.getElementById('curr-irt').classList.add('active');
+                currentPrices = [...basePricesIRT];
+                currUnit = 'تومان';
+                document.getElementById('cart-curr-label').innerText = "🇮🇷 تومان (IRR) - ارسال داخلی";
+                showToast("🇮🇷 قیمت‌ها به تومان (بازار داخلی ایران) تغییر کرد");
+            } else if (curr === 'aed') {
+                document.getElementById('curr-aed').classList.add('active');
+                currentPrices = [...basePricesAED];
+                currUnit = 'درهم AED';
+                document.getElementById('cart-curr-label').innerText = "🇦🇪 درهم (AED) - صادرات خلیج فارس";
+                showToast("🇦🇪 قیمت‌ها به درهم امارات (صادرات خلیج فارس) تغییر کرد");
+            } else {
+                document.getElementById('curr-usd').classList.add('active');
+                currentPrices = [...basePricesUSD];
+                currUnit = '$ USD';
+                document.getElementById('cart-curr-label').innerText = "🇺🇸 دلار (USD) - پرداخت تتر Crypto";
+                showToast("🇺🇸 قیمت‌ها به دلار آمریکا / تتر (USDT) تغییر کرد");
+            }
+
+            // Update product prices
+            priceTexts.forEach((el, idx) => {
+                el.innerHTML = `${currentPrices[idx].toLocaleString('fa-IR')} <span>${currUnit}</span>`;
+            });
+            oldTexts.forEach((el, idx) => {
+                const old = Math.round(currentPrices[idx] * 1.18);
+                el.innerText = `${old.toLocaleString('fa-IR')} ${currUnit}`;
+            });
+            heroText.innerHTML = `${currentPrices[0].toLocaleString('fa-IR')} <span>${currUnit}</span>`;
+            updateCartUI();
+        }
+
+        // 2. Shipping Time Estimator from Mashhad
+        function calcShipping() {
+            const dest = document.getElementById('dest-select').value;
+            const timeVal = document.getElementById('ship-time-val');
+            const methodVal = document.getElementById('ship-method-val');
+            
+            if (dest === 'mashhad') {
+                timeVal.innerText = "۲ تا ۴ ساعت کاری (تحویل فوری حضوری / پیک)";
+                methodVal.innerText = "روش ارسال: پیک موتوری معتمد گالری در مشهد";
+            } else if (dest === 'tehran') {
+                timeVal.innerText = "۲۴ تا ۴۸ ساعت (۱ تا ۲ روز کاری)";
+                methodVal.innerText = "روش ارسال: پست ویژه هوایی مشهد-تهران / چاپار";
+            } else if (dest === 'other_iran') {
+                timeVal.innerText = "۴۸ تا ۷۲ ساعت (۲ تا ۳ روز کاری)";
+                methodVal.innerText = "روش ارسال: پست پیشتاز ثبتی با اظهار ارزش واقعی";
+            } else if (dest === 'gcc') {
+                timeVal.innerText = "۴ تا ۷ روز کاری (ارسال هوایی EMS / آرامکس)";
+                methodVal.innerText = "روش ارسال: پست ویژه هوایی از هاب مشهد-دبی با بیمه تکمیلی";
+            } else {
+                timeVal.innerText = "۵ تا ۸ روز کاری (کاراپست / TPG / DHL)";
+                methodVal.innerText = "روش ارسال: کوریر اکسپرس بین‌المللی با بیمه دلاری";
+            }
+            showToast("✈️ زمان و روش تحویل از مبدأ مشهد محاسبه شد.");
+        }
+
+        // 3. Gemstone Filter
+        function filterGem(gem, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const cards = document.querySelectorAll('.product-card');
+            let count = 0;
+            cards.forEach(card => {
+                const cardGem = card.getAttribute('data-gem');
+                if (gem === 'all' || cardGem === gem) {
+                    card.style.display = 'flex';
+                    count++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            showToast(`✨ تعداد ${count} انگشتر در دسته‌بندی انتخابی نمایش داده شد.`);
+        }
+
+        // 4. Ring Size Calculator
+        function updateSize(mm) {
+            document.getElementById('mm-val').innerText = mm;
+            document.getElementById('iran-size').innerText = `سایز ${mm}`;
+            let us = Math.round((mm - 44) / 2.5);
+            if(us<5) us=5; if(us>14) us=14;
+            document.getElementById('us-size').innerText = `US Size ${us}`;
+        }
+
+        // 5. Shopping Cart Logic
+        let cart = [];
+        let totalVal = 0;
+
+        function addToCart(title, price) {
+            cart.push({ title, price });
+            totalVal += price;
+            updateCartUI();
+            showToast(`💍 «${title}» به سبد خرید اضافه شد!`);
+            if (typeof confetti !== 'undefined' && cart.length === 1) {
+                confetti({ particleCount: 80, spread: 60, origin: { y: 0.8 } });
+            }
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length.toLocaleString('fa-IR');
+            const box = document.getElementById('cart-items-box');
+            
+            if (cart.length === 0) {
+                box.innerHTML = '<div style="color: var(--text-muted); text-align: center; padding: 40px 0;">سبد خرید شما در حال حاضر خالی است.</div>';
+            } else {
+                box.innerHTML = '';
+                cart.forEach((item, index) => {
+                    const el = document.createElement('div');
+                    el.className = 'cart-item';
+                    el.innerHTML = `
+                        <span style="font-weight: 700; color: #fff;">${index + ۱}. ${item.title}</span>
+                        <span style="color: var(--turquoise); font-weight: 800;">${item.price.toLocaleString('fa-IR')} ${currUnit}</span>
+                    `;
+                    box.appendChild(el);
+                });
+            }
+            document.getElementById('cart-total-price').innerHTML = `${totalVal.toLocaleString('fa-IR')} <span>${currUnit}</span>`;
+        }
+
+        function openCart() { document.getElementById('cart-modal').style.display = 'flex'; }
+        function closeCart() { document.getElementById('cart-modal').style.display = 'none'; }
+        function checkout() {
+            if (cart.length === 0) {
+                alert("⚠️ سبد خرید شما خالی است! لطفاً ابتدا انگشتر مورد نظرتان را انتخاب کنید.");
+                return;
+            }
+            closeCart();
+            if (typeof confetti !== 'undefined') {
+                confetti({ particleCount: 150, spread: 90, origin: { y: 0.5 } });
+            }
+            if (currentCurr === 'irt') {
+                alert(`🇮🇷 استعلام موجودی و قیمت داخلی:\n\nسفارش شما به مبلغ ${totalVal.toLocaleString('fa-IR')} تومان ثبت شد.\n\nهم‌اکنون پیامک تایید موجودی انبار مشهد و لینک پرداخت ۲ ساعته برای شما ارسال گردید.`);
+            } else {
+                alert(`🌍 International Export Order:\n\nYour order total is ${totalVal.toLocaleString('fa-IR')} ${currUnit} (Free Insured Express Shipping included).\n\nYou will now be redirected to our instant Crypto (USDT Tron) / Stripe payment portal.`);
+            }
+            cart = []; totalVal = 0; updateCartUI();
+        }
+
+        // 6. Toast Notification
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.style.display = 'flex';
+            setTimeout(() => { toast.style.display = 'none'; }, 3500);
+        }
+    </script>
+</body>
+</html>
