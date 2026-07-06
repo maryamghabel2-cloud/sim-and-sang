@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خانه عطر نیش و دست‌ساز «رایحه شاهانه» | Royal Persian Niche Perfume House</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --bg-silk: #FCF9F3;
+            --surface-creme: #F5EFE6;
+            --bordeaux: #4A0E17;
+            --bordeaux-light: #6D1623;
+            --gold: #C5A059;
+            --gold-light: #DFCA9D;
+            --charcoal: #2D2926;
+            --muted: #78716C;
+            --border: #E6DDD0;
+            --font-serif: 'Cinzel', serif;
+            --font-fa: 'Vazirmatn', Tahoma, IRANSans, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-fa); }
+        
+        body {
+            background-color: var(--bg-silk);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            line-height: 1.9;
+        }
+
+        /* Minimalist High-Fashion Header */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 30px 80px; border-bottom: 1px solid var(--border);
+            background: var(--bg-silk); position: sticky; top: 0; z-index: 100;
+        }
+        @media (max-width: 900px) { header { padding: 20px 24px; flex-direction: column; gap: 16px; } }
+
+        .brand-box { text-align: center; text-decoration: none; }
+        .brand-en { font-family: var(--font-serif); font-size: 20px; font-weight: 700; letter-spacing: 6px; color: var(--bordeaux); display: block; }
+        .brand-fa { font-size: 13px; font-weight: 500; color: var(--gold); letter-spacing: 2px; margin-top: 2px; }
+
+        .nav-list { display: flex; gap: 36px; list-style: none; }
+        .nav-list a { color: var(--charcoal); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-list a:hover { color: var(--bordeaux); }
+        @media (max-width: 700px) { .nav-list { display: none; } }
+
+        .header-actions { display: flex; gap: 20px; align-items: center; }
+        .btn-minimal {
+            background: transparent; border: 1px solid var(--charcoal); color: var(--charcoal);
+            padding: 10px 24px; font-size: 13px; font-weight: 600; cursor: pointer;
+            transition: all 0.4s; letter-spacing: 1px;
+        }
+        .btn-minimal:hover { background: var(--bordeaux); border-color: var(--bordeaux); color: #fff; }
+
+        /* HERO SECTION - ASYMMETRICAL EDITORIAL SPLIT */
+        .hero-editorial {
+            display: grid; grid-template-columns: 1.1fr 1fr; min-height: 85vh;
+            border-bottom: 1px solid var(--border);
+        }
+        @media (max-width: 992px) { .hero-editorial { grid-template-columns: 1fr; } }
+
+        .hero-content {
+            padding: 80px 80px 80px 60px; display: flex; flex-direction: column;
+            justify-content: center; border-left: 1px solid var(--border);
+            background: var(--surface-creme);
+        }
+        @media (max-width: 992px) { .hero-content { padding: 50px 24px; border-left: none; text-align: center; } }
+
+        .edition-tag {
+            font-family: var(--font-serif); font-size: 12px; letter-spacing: 4px;
+            color: var(--gold); text-transform: uppercase; margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 48px; font-weight: 800; color: var(--bordeaux);
+            line-height: 1.25; margin-bottom: 26px;
+        }
+        @media (max-width: 768px) { h1 { font-size: 34px; } }
+        
+        .hero-desc {
+            font-size: 16px; color: var(--muted); max-width: 520px; margin-bottom: 40px; font-weight: 400;
+        }
+        @media (max-width: 992px) { .hero-desc { margin: 0 auto 40px; } }
+
+        .btn-luxury {
+            background: var(--bordeaux); color: #fff; padding: 18px 42px;
+            font-size: 14px; font-weight: 600; letter-spacing: 2px; border: none;
+            cursor: pointer; transition: all 0.4s; width: max-content;
+            box-shadow: 0 10px 30px rgba(74, 14, 23, 0.2);
+        }
+        .btn-luxury:hover { background: var(--charcoal); transform: translateY(-2px); }
+        @media (max-width: 992px) { .btn-luxury { margin: 0 auto; } }
+
+        .hero-image-box {
+            position: relative; overflow: hidden; background: #EADDC9;
+        }
+        .hero-img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: contrast(1.05) saturate(1.05);
+        }
+        .image-overlay-quote {
+            position: absolute; bottom: 40px; right: 40px; background: rgba(253, 251, 247, 0.92);
+            padding: 24px 30px; border-right: 3px solid var(--gold); max-width: 380px;
+            backdrop-filter: blur(10px);
+        }
+        .quote-text { font-size: 14px; font-style: italic; color: var(--charcoal); margin-bottom: 8px; }
+        .quote-author { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1px; }
+
+        /* INTERACTIVE SCENT SOMMELIER QUIZ - FULL 4-QUESTION DYNAMIC ENGINE */
+        .quiz-section {
+            padding: 100px 80px; background: var(--bg-silk); border-bottom: 1px solid var(--border);
+        }
+        @media (max-width: 768px) { .quiz-section { padding: 60px 24px; } }
+        
+        .quiz-container {
+            max-width: 1000px; margin: 0 auto; background: var(--surface-creme);
+            border: 1px solid var(--border); padding: 60px; position: relative;
+        }
+        @media (max-width: 600px) { .quiz-container { padding: 30px 20px; } }
+
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 32px; font-weight: 800; color: var(--bordeaux); margin-bottom: 12px; }
+        .section-header p { font-size: 15px; color: var(--muted); max-width: 600px; margin: 0 auto; }
+
+        .quiz-step { display: none; animation: fadeStep 0.5s ease; }
+        .quiz-step.active { display: block; }
+        @keyframes fadeStep { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        .question-title { font-size: 22px; font-weight: 700; color: var(--charcoal); margin-bottom: 10px; text-align: center; }
+        .question-sub { font-size: 14px; color: var(--muted); margin-bottom: 30px; text-align: center; }
+        
+        .options-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        @media (max-width: 768px) { .options-grid { grid-template-columns: 1fr; } }
+        
+        .quiz-option {
+            background: var(--bg-silk); border: 1px solid var(--border); padding: 26px 20px;
+            text-align: center; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; justify-content: center;
+        }
+        .quiz-option:hover { border-color: var(--bordeaux); background: #fff; transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+        .opt-icon { font-size: 36px; margin-bottom: 14px; }
+        .opt-label { font-weight: 700; font-size: 16px; color: var(--charcoal); margin-bottom: 8px; }
+        .opt-sub { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+        .quiz-progress { display: flex; justify-content: center; gap: 8px; margin-bottom: 36px; }
+        .prog-dot { width: 40px; height: 4px; background: #E6DDD0; transition: background 0.3s; }
+        .prog-dot.active { background: var(--bordeaux); }
+
+        .quiz-result-card {
+            background: #fff; border: 1px solid var(--gold); padding: 40px;
+            display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; align-items: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+        }
+        @media (max-width: 768px) { .quiz-result-card { grid-template-columns: 1fr; text-align: center; } }
+        .result-img { width: 100%; height: 320px; object-fit: cover; }
+
+        /* INTERACTIVE OLFACTORY PYRAMID */
+        .pyramid-section {
+            padding: 100px 80px; background: #fff; border-bottom: 1px solid var(--border);
+        }
+        @media (max-width: 768px) { .pyramid-section { padding: 60px 24px; } }
+        
+        .pyramid-grid {
+            display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; max-width: 1200px;
+            margin: 0 auto; align-items: center;
+        }
+        @media (max-width: 900px) { .pyramid-grid { grid-template-columns: 1fr; } }
+
+        .pyramid-tabs { display: flex; flex-direction: column; gap: 16px; }
+        .note-tab {
+            background: var(--surface-creme); border: 1px solid var(--border); padding: 24px 30px;
+            cursor: pointer; transition: all 0.4s; display: flex; justify-content: space-between; align-items: center;
+        }
+        .note-tab:hover, .note-tab.active {
+            background: var(--bordeaux); color: #fff; border-color: var(--bordeaux);
+            padding-right: 40px;
+        }
+        .note-tab.active .note-sub { color: var(--gold-light); }
+        .note-title { font-size: 18px; font-weight: 700; }
+        .note-sub { font-size: 13px; color: var(--muted); }
+
+        .note-display {
+            background: var(--surface-creme); border: 1px solid var(--border); padding: 50px;
+            min-height: 380px; display: flex; flex-direction: column; justify-content: center;
+            text-align: center; position: relative;
+        }
+        .note-visual-icon { font-size: 64px; margin-bottom: 20px; }
+        .note-detail-title { font-size: 26px; font-weight: 800; color: var(--bordeaux); margin-bottom: 14px; }
+        .note-detail-desc { font-size: 15px; color: var(--charcoal); line-height: 2; margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        
+        .longevity-bar-wrap { max-width: 350px; margin: 0 auto; text-align: left; font-size: 12px; font-weight: 700; }
+        .longevity-bar { height: 6px; background: #E6DDD0; margin-top: 6px; overflow: hidden; }
+        .longevity-fill { height: 100%; background: var(--bordeaux); width: 85%; }
+
+        /* MINIMALIST BOUTIQUE COLLECTION */
+        .collection-section { padding: 100px 80px; background: var(--bg-silk); }
+        @media (max-width: 768px) { .collection-section { padding: 60px 24px; } }
+        
+        .editorial-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1350px; margin: 0 auto;
+        }
+        @media (max-width: 992px) { .editorial-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .editorial-grid { grid-template-columns: 1fr; } }
+
+        .perfume-item { background: transparent; display: flex; flex-direction: column; }
+        .perfume-img-wrap {
+            width: 100%; height: 380px; background: #EADDC9; overflow: hidden;
+            margin-bottom: 24px; position: relative;
+        }
+        .perfume-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }
+        .perfume-item:hover .perfume-img { transform: scale(1.06); }
+        
+        .perfume-volume {
+            position: absolute; top: 16px; left: 16px; font-family: var(--font-serif);
+            font-size: 11px; letter-spacing: 2px; background: rgba(253, 251, 247, 0.9);
+            padding: 6px 12px; color: var(--charcoal); font-weight: 700;
+        }
+
+        .perfume-name { font-size: 22px; font-weight: 800; color: var(--bordeaux); margin-bottom: 6px; }
+        .perfume-notes { font-size: 13px; color: var(--muted); margin-bottom: 18px; font-style: italic; }
+        .perfume-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 16px; }
+        .perfume-price { font-size: 20px; font-weight: 800; color: var(--charcoal); }
+        
+        .btn-add-minimal {
+            background: transparent; border: 1px solid var(--charcoal); color: var(--charcoal);
+            padding: 10px 20px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.3s;
+        }
+        .btn-add-minimal:hover { background: var(--bordeaux); border-color: var(--bordeaux); color: #fff; }
+
+        /* Footer */
+        footer {
+            padding: 80px 80px 40px; background: #1C1917; color: #D6D3D1;
+            border-top: 1px solid #292524; text-align: center;
+        }
+        .footer-brand { font-family: var(--font-serif); font-size: 24px; letter-spacing: 8px; color: var(--gold-light); margin-bottom: 16px; display: block; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin: 30px 0; list-style: none; font-size: 13px; }
+        .footer-links a { color: #A8A29E; text-decoration: none; }
+        .footer-copy { font-size: 12px; color: #78716C; border-top: 1px solid #292524; padding-top: 30px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <!-- Minimalist High-Fashion Header -->
+    <header>
+        <a href="#" class="brand-box">
+            <span class="brand-en">RAYEHE SHAHANE</span>
+            <span class="brand-fa">خانه عطر نیش و رایحه‌های دست‌ساز شاهانه</span>
+        </a>
+
+        <ul class="nav-list">
+            <li><a href="#collection">کلکسیون عطرهای نیش</a></li>
+            <li><a href="#pyramid">هرم بویایی و نت‌ها</a></li>
+            <li><a href="#sommelier">آزمون روانشناسی عطر امضا</a></li>
+            <li><a href="#about">فلسفه و اصالت خانه عطر</a></li>
+        </ul>
+
+        <div class="header-actions">
+            <button class="btn-minimal" onclick="alert('🛍️ سبد خرید شما در گالری شاهانه در حال حاضر خالی است.')">
+                سبد عطرها [۰]
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION - ASYMMETRICAL EDITORIAL SPLIT -->
+    <section class="hero-editorial">
+        <div class="hero-content">
+            <span class="edition-tag">COLLECTION PRIVÉE • PARFUM DE NICHE</span>
+            <h1>هنر تجسم خاطرات؛ <br>رایحه‌هایی از جنس اصالت و شکوه ایرانی</h1>
+            <p class="hero-desc">خلق شاهکارهای بویایی در نسخه‌های محدود با الهام از رز کهن کاشان، زعفران سرخ خراسان، چوب صندل و مشک کهربایی. هر شیشه عطر، روایتی ناگفته از شخصیت و وقار شماست.</p>
+            <a href="#sommelier" class="btn-luxury">✦ کشف عطر امضای شخصی شما</a>
+        </div>
+
+        <div class="hero-image-box">
+            <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1000&q=80" alt="Royal Persian Perfume" class="hero-img">
+            <div class="image-overlay-quote">
+                <div class="quote-text">«عطر، نامرئی‌ترین اما ماندگارترین اکسسوری یک انسان است که حتی پس از رفتنش در اتاق باقی می‌ماند.»</div>
+                <div class="quote-author">✦ مستر پارفومر گالری شاهانه</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SCENT SOMMELIER QUIZ - FULL 4-QUESTION DYNAMIC ENGINE -->
+    <section class="quiz-section" id="sommelier">
+        <div class="quiz-container">
+            <div class="section-header">
+                <h2>آزمون روانشناسی تشخیص عطر امضا (Scent Sommelier)</h2>
+                <p>به ۴ سوال کوتاه زیر پاسخ دهید تا عطرساز هوشمند گالری بر اساس نمره‌دهی داینامیک، رایحه‌ای کاملاً متناسب با روحیات، طبع و سبک زندگی شما را پیشنهاد دهد:</p>
+            </div>
+
+            <div class="quiz-progress">
+                <div class="prog-dot active" id="dot-1"></div>
+                <div class="prog-dot" id="dot-2"></div>
+                <div class="prog-dot" id="dot-3"></div>
+                <div class="prog-dot" id="dot-4"></div>
+            </div>
+
+            <!-- Step 1: Occasion -->
+            <div class="quiz-step active" id="q-step-1">
+                <div class="question-title">۱. در چه موقعیت و زمانی قصد استفاده از این عطر را دارید؟</div>
+                <div class="question-sub">موقعیت اجتماعی شما اولین معیار در تعیین میزان سنگینی و پخش بوی عطر است</div>
+                <div class="options-grid">
+                    <div class="quiz-option" onclick="answerQuestion(1, 'woody')">
+                        <div class="opt-icon">🥂</div>
+                        <div class="opt-label">مجالس رسمی و شبانه‌های لوکس</div>
+                        <div class="opt-sub">پخش بوی بالا، سنگین و وقار اشرافی</div>
+                    </div>
+                    <div class="quiz-option" onclick="answerQuestion(1, 'floral')">
+                        <div class="opt-icon">🌹</div>
+                        <div class="opt-label">دیدارهای عاشقانه و صمیمی</div>
+                        <div class="opt-sub">رایحه گرم، اغواکننده، لطیف و احساسی</div>
+                    </div>
+                    <div class="quiz-option" onclick="answerQuestion(1, 'leather')">
+                        <div class="opt-icon">☀️</div>
+                        <div class="opt-label">استفاده روزمره، جلسات کاری و مدیریت</div>
+                        <div class="opt-sub">رایحه‌ای باصلابت، بانفوذ، شاداب و انرژی‌بخش</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Olfactory Family -->
+            <div class="quiz-step" id="q-step-2">
+                <div class="question-title">۲. کدام خانواده بویایی بیشترین آرامش و حس جذابیت را به شما می‌دهد؟</div>
+                <div class="question-sub">هر خانواده بویایی بازتاب‌دهنده یکی از عناصر طبیعت و روحیه درونی شماست</div>
+                <div class="options-grid">
+                    <div class="quiz-option" onclick="answerQuestion(2, 'woody')">
+                        <div class="opt-icon">🪵</div>
+                        <div class="opt-label">چوبی، تلخ و دودی (Woody & Smoky)</div>
+                        <div class="opt-sub">چوب صندل، عود طبیعی، خس‌خس و وتایور</div>
+                    </div>
+                    <div class="quiz-option" onclick="answerQuestion(2, 'floral')">
+                        <div class="opt-icon">🌸</div>
+                        <div class="opt-label">گلی، ملایم و پودری (Floral & Powdery)</div>
+                        <div class="opt-sub">رز ناب کاشان، زنبق فلورانس، وانیل و شکوفه پرتقال</div>
+                    </div>
+                    <div class="quiz-option" onclick="answerQuestion(2, 'leather')">
+                        <div class="opt-icon">🔥</div>
+                        <div class="opt-label">چرمی، ادویه‌ای و کهربایی (Leather & Oriental)</div>
+                        <div class="opt-sub">چرم توسکان، زعفران سرخ، برگ تنباکو و هل</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Longevity & Sillage -->
+            <div class="quiz-step" id="q-step-3">
+                <div class="question-title">۳. انتظار شما از ماندگاری و خط بوی عطر (Sillage) در محیط چیست؟</div>
+                <div class="question-sub">میزان غلظت اسانس (Extrait vs Eau de Parfum) بر این اساس تنظیم می‌شود</div>
+                <div class="options-grid">
+                    <div class="quiz-option" onclick="answerQuestion(3, 'woody')">
+                        <div class="opt-icon">🌪️</div>
+                        <div class="opt-label">خط بوی خیره‌کننده و ماندگاری ۴۸ ساعته</div>
+                        <div class="opt-sub">عطری که حتی پس از ترک اتاق، رد بوی آن در فضا بماند</div>
+                    </div>
+                    <div class="quiz-option" onclick="answerQuestion(3, 'floral')">
+                        <div class="opt-icon">🍃</div>
+                        <div class="opt-label">رایحه‌ای لطیف، نزدیک به پوست و صمیمی</div>
+                        <div class="opt-sub">عطری ملایم که فقط افرادی که در حریم خصوصی شما هستند حس کنند</div>
+                    </div>
+                    <div class="quiz-option" onclick="answerQuestion(3, 'leather')">
+                        <div class="opt-icon">⚡</div>
+                        <div class="opt-label">پخش بوی قدرتمند در ساعات اولیه و ماندگاری متعادل</div>
+                        <div class="opt-sub">مناسب برای جلسات مهم کاری و قرارهای چند ساعته</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Personality Archetype -->
+            <div class="quiz-step" id="q-step-4">
+                <div class="question-title">۴. اطرافیان معمولاً شخصیت شما را با کدام ویژگی توصیف می‌کنند؟</div>
+                <div class="question-sub">آخرین گام برای تطبیق کامل هویت عطر با کهن‌الگوی شخصیتی شما</div>
+                <div class="options-grid">
+                    <div class="quiz-option" onclick="answerQuestion(4, 'woody')">
+                        <div class="opt-icon">👑</div>
+                        <div class="opt-label">قدرتمند، قاطع، سنتی و باوقار</div>
+                        <div class="opt-sub">رهبری که به اصالت، میراث و چارچوب‌های کلاسیک اهمیت می‌دهد</div>
+                    </div>
+                    <div class="quiz-option" onclick="answerQuestion(4, 'floral')">
+                        <div class="opt-icon">✨</div>
+                        <div class="opt-label">آرام، مهربان، هنردوست و احساساتی</div>
+                        <div class="opt-sub">شخصیتی لطیف و خلاق که زیبایی‌های ظریف زندگی را تحسین می‌کند</div>
+                    </div>
+                    <div class="quiz-option" onclick="answerQuestion(4, 'leather')">
+                        <div class="opt-icon">🚀</div>
+                        <div class="opt-label">مدرن، جسور، پیشرو و پرشور</div>
+                        <div class="opt-sub">فردی ساختارشکن که دوست دارد متمایز باشد و قوانین جدید بسازد</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Dynamic Result Card -->
+            <div class="quiz-step" id="q-step-result">
+                <div class="question-title" style="color: var(--bordeaux);">✦ پیشنهاد اختصاصی مستر پارفومر برای شخصیت شما:</div>
+                <div class="question-sub" id="result-match-reason">بر اساس تحلیل ۴ پاسخ شما، این رایحه بیشترین همخوانی را با طبع و روحیه شما دارد</div>
+                
+                <div class="quiz-result-card">
+                    <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80" id="res-img" alt="عطر امضا" class="result-img">
+                    <div>
+                        <span style="font-family: var(--font-serif); color: var(--gold); font-size: 13px; letter-spacing: 2px;">EDITION SPÉCIALE • SUR MESURE</span>
+                        <h3 style="font-size: 28px; color: var(--bordeaux); margin: 8px 0 14px;" id="res-title">عطر نیش «سلطان العود و زعفران»</h3>
+                        <p style="font-size: 14px; color: var(--charcoal); line-height: 2; margin-bottom: 24px;" id="res-desc">ترکیبی باشکوه از عود طبیعی کامبوج، زعفران سرخ قائنات و مشک سفید. این رایحه با طبعی گرم و تلخ، ماندگاری بالای ۴۸ ساعت و پخش بوی خیره‌کننده، امضای شخصیت قدرتمند شما در مجالس خواهد بود.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 18px; flex-wrap: wrap; gap: 14px;">
+                            <span style="font-size: 22px; font-weight: 800; color: var(--bordeaux);" id="res-price">۶,۸۰۰,۰۰۰ تومان</span>
+                            <button class="btn-luxury" style="padding: 14px 28px;" onclick="alert('✨ عطر امضای شما با موفقیت رزرو شد. جعبه هدیه مخمل‌دار و حکاکی نام شما روی شیشه به صورت رایگان انجام می‌شود.')">سفارش این عطر امضا</button>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 24px;">
+                    <button onclick="resetQuiz()" style="background: none; border: none; color: var(--muted); cursor: pointer; font-size: 14px; text-decoration: underline; font-weight: 600;">↻ تکرار آزمون تشخیص عطر</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE OLFACTORY PYRAMID -->
+    <section class="pyramid-section" id="pyramid">
+        <div class="section-header">
+            <h2>هرم بویایی و تحلیل‌گر نت‌های عطر شاهانه</h2>
+            <p>یک عطر نیش اصیل مانند یک سمفونی در سه پرده شکوفا می‌شود. روی هر نت کلیک کنید تا راز ماندگاری و ترکیبات آن را کشف کنید:</p>
+        </div>
+
+        <div class="pyramid-grid">
+            <div class="pyramid-tabs">
+                <div class="note-tab active" onclick="showNote('top', this)">
+                    <div>
+                        <div class="note-title">🌸 نت‌های آغازی (Top Notes)</div>
+                        <div class="note-sub">اولین برخورد؛ شاداب، مرکباتی و فرار (حضور: ۱۵ تا ۳۰ دقیقه)</div>
+                    </div>
+                    <span>←</span>
+                </div>
+                <div class="note-tab" onclick="showNote('heart', this)">
+                    <div>
+                        <div class="note-title">🌹 نت‌های میانی / قلب عطر (Heart Notes)</div>
+                        <div class="note-sub">شخصیت اصلی عطر؛ گلی و ادویه‌ای (حضور: ۲ تا ۶ ساعت)</div>
+                    </div>
+                    <span>←</span>
+                </div>
+                <div class="note-tab" onclick="showNote('base', this)">
+                    <div>
+                        <div class="note-title">🪵 نت‌های پایانی / پایه (Base Notes)</div>
+                        <div class="note-sub">راز ماندگاری و خط بو؛ چوبی، دودی و کهربایی (حضور: تا ۴۸ ساعت)</div>
+                    </div>
+                    <span>←</span>
+                </div>
+            </div>
+
+            <div class="note-display">
+                <div class="note-visual-icon" id="note-icon">🍋</div>
+                <div class="note-detail-title" id="note-title">ترنج سیسیلی، زعفران ایرانی و شکوفه نارنج</div>
+                <div class="note-detail-desc" id="note-desc">نت‌های آغازی بلافاصله پس از اسپری شدن عطر به مشام می‌رسند. وظیفه این نت‌ها ایجاد حسی شاداب، پرانرژی و جذاب در اولین لحظات است. ما از خالص‌ترین اسانس ترنج و زعفران سرخ استفاده می‌کنیم.</div>
+                <div class="longevity-bar-wrap">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>قدرت پخش بو در فضا (Sillage):</span>
+                        <span id="sillage-val" style="color: var(--bordeaux);">بسیار شدید (عالی)</span>
+                    </div>
+                    <div class="longevity-bar">
+                        <div class="longevity-fill" id="longevity-bar-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MINIMALIST BOUTIQUE COLLECTION -->
+    <section class="collection-section" id="collection">
+        <div class="section-header">
+            <h2>کلکسیون خصوصی گالری (Collection Privée)</h2>
+            <p>تمامی عطرها با غلظت اکستریت د پارفوم (Extrait de Parfum) و بسته‌بندی مخمل‌دار عرضه می‌شوند</p>
+        </div>
+
+        <div class="editorial-grid">
+            <div class="perfume-item">
+                <div class="perfume-img-wrap">
+                    <span class="perfume-volume">100 ML • EXTRAIT</span>
+                    <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80" alt="سلطان العود" class="perfume-img">
+                </div>
+                <h3 class="perfume-name">سلطان العود (Sultan Oud)</h3>
+                <div class="perfume-notes">نت‌ها: عود کامبوج، زعفران قائنات، چوب صندل، مشک سفید</div>
+                <div class="perfume-footer">
+                    <span class="perfume-price">۶,۸۰۰,۰۰۰ تومان</span>
+                    <button class="btn-add-minimal" onclick="alert('✨ عطر «سلطان العود» به سبد خرید شما اضافه شد.')">+ افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="perfume-item">
+                <div class="perfume-img-wrap">
+                    <span class="perfume-volume">100 ML • EXTRAIT</span>
+                    <img src="https://images.unsplash.com/photo-1588405766542-551b3f284776?auto=format&fit=crop&w=800&q=80" alt="رز و کهربا" class="perfume-img">
+                </div>
+                <h3 class="perfume-name">رز اشرافی کاشان (Rose Impériale)</h3>
+                <div class="perfume-notes">نت‌ها: رز ناب کاشان، وانیل ماداگاسکار، زنبق، کهربا</div>
+                <div class="perfume-footer">
+                    <span class="perfume-price">۵,۹۰۰,۰۰۰ تومان</span>
+                    <button class="btn-add-minimal" onclick="alert('✨ عطر «رز اشرافی کاشان» به سبد خرید شما اضافه شد.')">+ افزودن به سبد</button>
+                </div>
+            </div>
+
+            <div class="perfume-item">
+                <div class="perfume-img-wrap">
+                    <span class="perfume-volume">100 ML • EXTRAIT</span>
+                    <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80" alt="چرم و تنباکو" class="perfume-img">
+                </div>
+                <h3 class="perfume-name">چرم و تنباکوی سلطنتی (Cuir Royal)</h3>
+                <div class="perfume-notes">نت‌ها: چرم توسکان، برگ تنباکو، هل، خس‌خس، صمغ لابدانیوم</div>
+                <div class="perfume-footer">
+                    <span class="perfume-price">۷,۲۰۰,۰۰۰ تومان</span>
+                    <button class="btn-add-minimal" onclick="alert('✨ عطر «چرم و تنباکوی سلطنتی» به سبد خرید شما اضافه شد.')">+ افزودن به سبد</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <span class="footer-brand">RAYEHE SHAHANE</span>
+        <p style="margin-bottom: 16px;">خانه عطر نیش و دست‌ساز شاهانه | تجلی شکوه، هنر و اصالت در رایحه‌ها</p>
+        <ul class="footer-links">
+            <li><a href="#">فلسفه خلق عطرها</a></li>
+            <li><a href="#">رزرو وقت تست حضوری در بوتیک تهران</a></li>
+            <li><a href="#">شناسنامه اصالت اسانس‌ها</a></li>
+            <li><a href="#">حکاکی اختصاصی نام روی شیشه</a></li>
+        </ul>
+        <div class="footer-copy">© ۱۴۰۵ تمامی حقوق مادی و معنوی متعلق به خانه عطر شاهانه می‌باشد. طراحی‌شده با پارادایم مینیمال و سرمقاله.</div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // 1. Full 4-Question Dynamic Scent Sommelier Quiz Logic
+        let scores = { woody: 0, floral: 0, leather: 0 };
+
+        function answerQuestion(step, category) {
+            scores[category]++;
+            
+            document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
+            
+            if (step < 4) {
+                document.getElementById(`q-step-${step + 1}`).classList.add('active');
+                for(let i=1; i<=4; i++) {
+                    const dot = document.getElementById(`dot-${i}`);
+                    if(i <= step + 1) dot.classList.add('active');
+                    else dot.classList.remove('active');
+                }
+            } else {
+                // Calculate winning category
+                let winner = 'woody';
+                let max = scores.woody;
+                if (scores.floral > max) { winner = 'floral'; max = scores.floral; }
+                if (scores.leather > max) { winner = 'leather'; max = scores.leather; }
+
+                // Display dynamic recommendation
+                const img = document.getElementById('res-img');
+                const title = document.getElementById('res-title');
+                const desc = document.getElementById('res-desc');
+                const price = document.getElementById('res-price');
+                const reason = document.getElementById('result-match-reason');
+
+                if (winner === 'floral') {
+                    img.src = "https://images.unsplash.com/photo-1588405766542-551b3f284776?auto=format&fit=crop&w=800&q=80";
+                    title.innerText = "عطر نیش «رز اشرافی کاشان و زنبق» (Rose Impériale)";
+                    desc.innerText = "ترکیبی احساسی، لطیف و بسیار شیک از عصاره رز ناب کاشان، وانیل ماداگاسکار و زنبق فلورانس. این رایحه گلی و پودری برای دیدارهای عاشقانه و شخصیت آرام و هنردوست شما انتخابی بی‌نظیر است.";
+                    price.innerText = "۵,۹۰۰,۰۰۰ تومان";
+                    reason.innerText = "✦ تطبیق ۱۰۰٪ با روحیه احساساتی، هنری و علاقه شما به رایحه‌های لطیف و پودری";
+                } else if (winner === 'leather') {
+                    img.src = "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80";
+                    title.innerText = "عطر نیش «چرم توسکان و تنباکو» (Cuir Royal)";
+                    desc.innerText = "رایحه‌ای جسورانه، مدرن و باصلابت از چرم اصیل توسکان، برگ تنباکو و هل. این عطر شرقی و ادویه‌ای برای جلسات مهم کاری و شخصیت پیشرو و متمایز شما طراحی شده است.";
+                    price.innerText = "۷,۲۰۰,۰۰۰ تومان";
+                    reason.innerText = "✦ تطبیق ۱۰۰٪ با شخصیت جسور، مدرن و علاقه شما به پخش بوی پرقدرت و ادویه‌ای";
+                } else {
+                    img.src = "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80";
+                    title.innerText = "عطر نیش «سلطان العود و زعفران» (Sultan Oud)";
+                    desc.innerText = "ترکیبی باشکوه از عود طبیعی کامبوج، زعفران سرخ قائنات و مشک سفید. این رایحه با طبعی گرم و تلخ، ماندگاری بالای ۴۸ ساعت و خط بوی خیره‌کننده، امضای شخصیت باوقار و قدرتمند شما در مجالس رسمی است.";
+                    price.innerText = "۶,۸۰۰,۰۰۰ تومان";
+                    reason.innerText = "✦ تطبیق ۱۰۰٪ با کهن‌الگوی رهبری، وقار کلاسیک و علاقه شما به ماندگاری ۴۸ ساعته";
+                }
+
+                document.getElementById('q-step-result').classList.add('active');
+            }
+        }
+
+        function resetQuiz() {
+            scores = { woody: 0, floral: 0, leather: 0 };
+            document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
+            document.getElementById('q-step-1').classList.add('active');
+            for(let i=1; i<=4; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if(i === 1) dot.classList.add('active');
+                else dot.classList.remove('active');
+            }
+        }
+
+        // 2. Olfactory Pyramid Note Switcher
+        function showNote(type, tab) {
+            document.querySelectorAll('.note-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const icon = document.getElementById('note-icon');
+            const title = document.getElementById('note-title');
+            const desc = document.getElementById('note-desc');
+            const sillage = document.getElementById('sillage-val');
+            const fill = document.getElementById('longevity-bar-fill');
+
+            if (type === 'top') {
+                icon.innerText = "🍋";
+                title.innerText = "ترنج سیسیلی، زعفران ایرانی و شکوفه نارنج";
+                desc.innerText = "نت‌های آغازی بلافاصله پس از اسپری شدن عطر به مشام می‌رسند. وظیفه این نت‌ها ایجاد حسی شاداب، پرانرژی و جذاب در اولین لحظات است. ما از خالص‌ترین اسانس ترنج و زعفران سرخ استفاده می‌کنیم.";
+                sillage.innerText = "بسیار شدید و فوری (بوی اولیه)";
+                fill.style.width = "90%";
+            } else if (type === 'heart') {
+                icon.innerText = "🌹";
+                title.innerText = "رز ناب کاشان، زنبق فلورانس و چوب سدر";
+                desc.innerText = "نت میانی قلب و شخصیت اصلی عطر است که پس از ۲۰ دقیقه نمایان می‌شود. این رایحه‌ها ساختار احساسی، گلی و ادویه‌ای عطر را شکل می‌دهند و ماندگاری آن‌ها تا ساعت‌ها با شما همراه است.";
+                sillage.innerText = "متعادل، عمیق و اغواکننده";
+                fill.style.width = "75%";
+            } else {
+                icon.innerText = "🪵";
+                title.innerText = "عود طبیعی کامبوج، مشک کهربایی و چرم توسکان";
+                desc.innerText = "نت‌های پایانی راز ماندگاری خارق‌العاده و خط بوی عطر (Sillage) هستند. این ترکیبات سنگین چوبی و دودی حتی پس از شستشوی لباس نیز ردی ملایم و اشرافی از خود به جای می‌گذارند.";
+                sillage.innerText = "ماندگاری فوق‌العاده تا ۴۸ ساعت";
+                fill.style.width = "100%";
+            }
+        }
+    </script>
+</body>
+</html>

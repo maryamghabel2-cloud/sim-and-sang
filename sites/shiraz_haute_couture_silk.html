@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عمارت مد و پوشاک فاخر «پرنیان پارس» | Parnian Haute Couture & Persian Silk</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,600;0,800;1,400&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --bg-linen: #FAF7F2;
+            --surface-travertine: #F2ECE1;
+            --pomegranate: #7A1C28;
+            --pomegranate-dark: #58121C;
+            --antique-gold: #B8860B;
+            --terracotta: #C86D51;
+            --charcoal: #262322;
+            --muted: #7A7470;
+            --border: #E5DCCB;
+            --font-serif: 'Cinzel', serif;
+            --font-fa: 'Vazirmatn', Tahoma, IRANSans, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-fa); }
+        
+        body {
+            background-color: var(--bg-linen);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            line-height: 2.1;
+        }
+
+        /* Minimalist High-Fashion Header */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 40px 80px; border-bottom: 1px solid var(--border);
+            background: var(--bg-linen); position: sticky; top: 0; z-index: 100;
+        }
+        @media (max-width: 900px) { header { padding: 24px 20px; flex-direction: column; gap: 18px; } }
+
+        .brand-box { text-decoration: none; display: flex; align-items: center; gap: 16px; }
+        .brand-icon { width: 44px; height: 44px; border: 1px solid var(--pomegranate); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 22px; color: var(--pomegranate); }
+        .brand-en { font-family: var(--font-serif); font-size: 22px; font-weight: 700; letter-spacing: 8px; color: var(--charcoal); display: block; }
+        .brand-fa { font-size: 13px; font-weight: 600; color: var(--antique-gold); letter-spacing: 2px; margin-top: 2px; }
+
+        .nav-list { display: flex; gap: 40px; list-style: none; }
+        .nav-list a { color: var(--charcoal); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-list a:hover { color: var(--pomegranate); }
+        @media (max-width: 800px) { .nav-list { display: none; } }
+
+        .btn-minimal {
+            background: transparent; border: 1px solid var(--charcoal); color: var(--charcoal);
+            padding: 12px 28px; font-size: 13px; font-weight: 600; cursor: pointer;
+            transition: all 0.4s; letter-spacing: 2px; text-decoration: none;
+        }
+        .btn-minimal:hover { background: var(--pomegranate); border-color: var(--pomegranate); color: #fff; }
+
+        /* HERO SECTION - ASYMMETRICAL EDITORIAL SPLIT WITH SUNLIT TRAVERTINE */
+        .hero-editorial {
+            display: grid; grid-template-columns: 1.15fr 1fr; min-height: 85vh;
+            border-bottom: 1px solid var(--border);
+        }
+        @media (max-width: 992px) { .hero-editorial { grid-template-columns: 1fr; } }
+
+        .hero-content {
+            padding: 100px 100px 100px 60px; display: flex; flex-direction: column;
+            justify-content: center; border-left: 1px solid var(--border);
+            background: var(--surface-travertine);
+        }
+        @media (max-width: 992px) { .hero-content { padding: 60px 24px; border-left: none; text-align: center; } }
+
+        .edition-tag {
+            font-family: var(--font-serif); font-size: 12px; letter-spacing: 5px;
+            color: var(--pomegranate); text-transform: uppercase; margin-bottom: 24px; font-weight: 700;
+        }
+        h1 {
+            font-size: 52px; font-weight: 800; color: var(--charcoal);
+            line-height: 1.3; margin-bottom: 30px; letter-spacing: -1px;
+        }
+        @media (max-width: 768px) { h1 { font-size: 36px; } }
+        
+        .hero-desc {
+            font-size: 17px; color: var(--muted); max-width: 540px; margin-bottom: 44px; font-weight: 400; line-height: 2.2;
+        }
+        @media (max-width: 992px) { .hero-desc { margin: 0 auto 44px; } }
+
+        .hero-image-box {
+            position: relative; overflow: hidden; background: #EADDC9; display: flex; align-items: center; justify-content: center;
+        }
+        .hero-img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: contrast(1.03) saturate(1.05); transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hero-image-box:hover .hero-img { transform: scale(1.05); }
+
+        .image-caption-card {
+            position: absolute; bottom: 50px; right: 50px; background: rgba(250, 247, 242, 0.94);
+            padding: 28px 36px; border-right: 3px solid var(--pomegranate); max-width: 400px;
+            backdrop-filter: blur(15px); box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        .caption-title { font-size: 18px; font-weight: 800; color: var(--charcoal); margin-bottom: 6px; }
+        .caption-sub { font-size: 13px; color: var(--muted); line-height: 1.8; }
+
+        /* INTERACTIVE TACTILE FABRIC MAGNIFIER (NEW CREATIVE PARADIGM) */
+        .tactile-section {
+            padding: 120px 80px; background: var(--bg-linen); border-bottom: 1px solid var(--border);
+        }
+        @media (max-width: 768px) { .tactile-section { padding: 60px 20px; } }
+        
+        .tactile-container {
+            max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center;
+        }
+        @media (max-width: 900px) { .tactile-container { grid-template-columns: 1fr; } }
+
+        .section-tag { font-family: var(--font-serif); font-size: 12px; letter-spacing: 4px; color: var(--antique-gold); margin-bottom: 12px; display: block; }
+        h2 { font-size: 38px; font-weight: 800; color: var(--charcoal); margin-bottom: 20px; line-height: 1.3; }
+        
+        .fabric-viewer {
+            position: relative; width: 100%; height: 460px; border: 1px solid var(--border);
+            overflow: hidden; cursor: crosshair; background: #EADDC9;
+        }
+        .fabric-img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Zoom Magnifier Lens */
+        .zoom-lens {
+            position: absolute; width: 180px; height: 180px; border-radius: 50%;
+            border: 2px solid var(--pomegranate); background-repeat: no-repeat;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 0 20px rgba(0,0,0,0.2);
+            pointer-events: none; opacity: 0; transition: opacity 0.3s;
+        }
+        .fabric-viewer:hover .zoom-lens { opacity: 1; }
+
+        .tactile-info { background: var(--surface-travertine); border: 1px solid var(--border); padding: 40px; }
+        .spec-row { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding: 14px 0; font-size: 14px; }
+        .spec-lbl { color: var(--muted); }
+        .spec-val { font-weight: 700; color: var(--charcoal); }
+
+        /* INTERACTIVE PERSIAN LOOM & PAISLEY (BOTEH-JEGHEH) WEAVING SYMPHONY */
+        .loom-section { padding: 120px 80px; background: #fff; border-bottom: 1px solid var(--border); text-align: center; }
+        @media (max-width: 768px) { .loom-section { padding: 60px 20px; } }
+        
+        .loom-box { max-width: 950px; margin: 0 auto; }
+        .thread-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: 36px 0; }
+        .thread-btn {
+            padding: 14px 28px; border-radius: 40px; border: 1px solid var(--border);
+            background: var(--bg-linen); color: var(--charcoal); font-weight: 700; font-size: 14px;
+            cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 10px;
+        }
+        .thread-btn:hover, .thread-btn.active { border-color: var(--pomegranate); background: var(--pomegranate); color: #fff; box-shadow: 0 10px 25px rgba(122, 28, 40, 0.2); }
+        .thread-dot { width: 14px; height: 14px; border-radius: 50%; }
+
+        #loom-canvas { width: 100%; max-width: 700px; height: 350px; background: var(--surface-travertine); border: 1px solid var(--border); margin: 0 auto; }
+
+        /* MINIMALIST HAUTE COUTURE GALLERY */
+        .gallery-section { padding: 120px 80px; background: var(--bg-linen); }
+        @media (max-width: 768px) { .gallery-section { padding: 60px 20px; } }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1350px; margin: 50px auto 0; }
+        @media (max-width: 992px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+        .gallery-item { background: transparent; display: flex; flex-direction: column; }
+        .gallery-img-wrap { width: 100%; height: 440px; background: #EADDC9; overflow: hidden; margin-bottom: 24px; position: relative; }
+        .gallery-img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .gallery-item:hover .gallery-img { transform: scale(1.06); }
+        
+        .gallery-tag { position: absolute; top: 20px; left: 20px; font-family: var(--font-serif); font-size: 11px; letter-spacing: 3px; background: rgba(250, 247, 242, 0.94); padding: 8px 16px; color: var(--pomegranate); font-weight: 700; }
+        
+        .gallery-title { font-size: 24px; font-weight: 800; color: var(--charcoal); margin-bottom: 8px; }
+        .gallery-sub { font-size: 14px; color: var(--muted); margin-bottom: 20px; font-style: italic; }
+        
+        .gallery-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 18px; }
+        .gallery-price { font-size: 20px; font-weight: 800; color: var(--charcoal); }
+
+        /* Footer */
+        footer { padding: 80px; background: #1C1917; color: #D6D3D1; text-align: center; }
+        .footer-brand { font-family: var(--font-serif); font-size: 26px; letter-spacing: 8px; color: var(--antique-gold); margin-bottom: 16px; display: block; }
+        .footer-copy { font-size: 13px; color: #78716C; border-top: 1px solid #292524; padding-top: 30px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <!-- Minimalist High-Fashion Header -->
+    <header>
+        <a href="#" class="brand-box">
+            <div class="brand-icon">P</div>
+            <div>
+                <span class="brand-en">PARNIAN PARS</span>
+                <span class="brand-fa">عمارت مد، ترمه و پوشاک فاخر ابریشمی پرنیان</span>
+            </div>
+        </a>
+
+        <ul class="nav-list">
+            <li><a href="#tactile">عدسی لمس بافت ابریشم</a></li>
+            <li><a href="#loom">سمفونی بافندگی سنتی</a></li>
+            <li><a href="#gallery">کلکسیون پوشاک فاخر</a></li>
+            <li><a href="#about">میراث بافندگی شیراز</a></li>
+        </ul>
+
+        <a href="#gallery" class="btn-minimal">✦ رزرو بازدید خصوصی از عمارت</a>
+    </header>
+
+    <!-- HERO SECTION - WARM SUNLIT TRAVERTINE & LINEN -->
+    <section class="hero-editorial" id="about">
+        <div class="hero-content">
+            <span class="edition-tag">HAUTE COUTURE • PERSIAN HERITAGE 2026</span>
+            <h1>تولد دوباره شکوه؛ <br>تلاقی ابریشم ناب و هنر دست‌باف شیراز</h1>
+            <p class="hero-desc">خلق شاهکارهای پوشاک و رداهای فاخر با بافت سنتی ترمه، گلابتون و ابریشم ۱۰۰٪ طبیعی. هر اثر در عمارت پرنیان، حاصل ماه‌ها نگارگری و بافندگی استادکاران اصیل است.</p>
+            <a href="#tactile" class="btn-minimal" style="background: var(--pomegranate); color: #fff; border-color: var(--pomegranate);">🔍 لمس و بررسی بافت الیاف زیر عدسی ←</a>
+        </div>
+
+        <div class="hero-image-box">
+            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=80" alt="Persian Silk Haute Couture" class="hero-img">
+            <div class="image-caption-card">
+                <div class="caption-title">ردا و خرقه‌ی شاهانه «سروستان»</div>
+                <div class="caption-sub">بافت ابریشم و گلابتون طلا • الهام از نقوش اسلیمی باغ ارم شیراز • نسخه محدود ۵ عددی</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE TACTILE FABRIC MAGNIFIER -->
+    <section class="tactile-section" id="tactile">
+        <div class="tactile-container">
+            <div>
+                <span class="section-tag">OPTICAL FIBER INSPECTION</span>
+                <h2>عدسی لمس بافت ترمه و الیاف طلا</h2>
+                <p style="color: var(--muted); font-size: 16px; margin-bottom: 28px; line-height: 2;">ماوس خود را روی تصویر ترمه روبرو حرکت دهید تا عدسی اپتیکال، ظرافت تار و پود ابریشم طبیعی و الیاف نقره/طلا را با ۵ برابر بزرگنمایی استودیویی به شما نشان دهد:</p>
+                
+                <div class="tactile-info">
+                    <div class="spec-row"><span class="spec-lbl">نوع الیاف تار و پود:</span><span class="spec-val">ابریشم طبیعی کاشان + نخ گلابتون طلا</span></div>
+                    <div class="spec-row"><span class="spec-lbl">تراکم بافت (تار در سانتی‌متر):</span><span class="spec-val">۱۴۰ رج (بالاترین ظرافت بافندگی)</span></div>
+                    <div class="spec-row"><span class="spec-lbl">نوع رنگرزی سنتی:</span><span class="spec-val">رنگ‌های ۱۰۰٪ طبیعی گیاهی (روناس، نیل و زعفران)</span></div>
+                    <div class="spec-row" style="border-bottom:none;"><span class="spec-lbl">زمان صرف‌شده برای بافت هر متر:</span><span class="spec-val" style="color: var(--pomegranate);">۴۵ روز کار مداوم استادکار</span></div>
+                </div>
+            </div>
+
+            <div class="fabric-viewer" id="viewer">
+                <img src="https://images.unsplash.com/photo-1606744888344-493238951221?auto=format&fit=crop&w=1000&q=80" id="viewer-img" class="fabric-img" alt="بافت ترمه ابریشمی">
+                <div class="zoom-lens" id="lens"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE PERSIAN LOOM SYMPHONY -->
+    <section class="loom-section" id="loom">
+        <div class="loom-box">
+            <span class="section-tag">INTERACTIVE WEAVING SYMPHONY</span>
+            <h2>سمفونی رنگ‌ها و دستگاه بافندگی سنتی</h2>
+            <p style="color: var(--muted); font-size: 16px;">رنگ نخ ابریشم مورد علاقه خود را انتخاب کنید تا دستگاه بافندگی مجازی، نقش بته‌جقه و اسلیمی را به صورت زنده روی بوم رسم کند:</p>
+
+            <div class="thread-buttons">
+                <button class="thread-btn active" onclick="weaveColor('#7A1C28', this)"><span class="thread-dot" style="background: #7A1C28;"></span> نخ ابریشم لاکی و اناری</button>
+                <button class="thread-btn" onclick="weaveColor('#1E3A8A', this)"><span class="thread-dot" style="background: #1E3A8A;"></span> نخ لاجورد و فیروزه‌ای</button>
+                <button class="thread-btn" onclick="weaveColor('#B8860B', this)"><span class="thread-dot" style="background: #B8860B;"></span> گلابتون زرین و زعفرانی</button>
+                <button class="thread-btn" onclick="weaveColor('#047857', this)"><span class="thread-dot" style="background: #047857;"></span> ابریشم زمردی و یشمی</button>
+            </div>
+
+            <canvas id="loom-canvas"></canvas>
+            <div style="font-size: 13px; color: var(--muted); margin-top: 16px;">✨ نقش‌نگاری زنده بر اساس هندسه کهن فرش و ترمه بافندگی شیراز</div>
+        </div>
+    </section>
+
+    <!-- MINIMALIST HAUTE COUTURE GALLERY -->
+    <section class="gallery-section" id="gallery">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+            <span class="section-tag">COLLECTION PRIVÉE 2026</span>
+            <h2>کلکسیون رداها و پوشاک شاهانه</h2>
+            <p style="color: var(--muted); font-size: 16px;">تمامی آثار با ضمانت کتبی اصالت الیاف ابریشم و بسته‌بندی چوبی معطر ارسال می‌شوند</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-img-wrap">
+                    <span class="gallery-tag">100% SILK • UNIQUE</span>
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80" alt="ردا شاهانه" class="gallery-img">
+                </div>
+                <h3 class="gallery-title">ردای ابریشمی «چهل‌ستون»</h3>
+                <div class="gallery-sub">بافت ترمه اصیل با رگه‌های گلابتون طلا • طراحی مزون شیراز</div>
+                <div class="gallery-footer">
+                    <span class="gallery-price">۴۸,۰۰۰,۰۰۰ تومان</span>
+                    <button class="btn-minimal" onclick="alert('✨ ردای ابریشمی «چهل‌ستون» جهت بازدید خصوصی رزرو شد.')">رزرو خرید خصوصی</button>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-img-wrap">
+                    <span class="gallery-tag">SILK & GOLD • LIMITED</span>
+                    <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="کت ابریشمی" class="gallery-img">
+                </div>
+                <h3 class="gallery-title">کت فاخر سوزن‌دوزی «حافظ»</h3>
+                <div class="gallery-sub">سوزن‌دوزی با نخ طلا روی مخمل ابریشمی زرشکی کاشان</div>
+                <div class="gallery-footer">
+                    <span class="gallery-price">۶۵,۰۰۰,۰۰۰ تومان</span>
+                    <button class="btn-minimal" onclick="alert('✨ کت فاخر «حافظ» جهت بازدید خصوصی رزرو شد.')">رزرو خرید خصوصی</button>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-img-wrap">
+                    <span class="gallery-tag">TERMEH WEAVE • ROYAL</span>
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="شال ترمه" class="gallery-img">
+                </div>
+                <h3 class="gallery-title">شال و خرقه‌ی «باغ ارم»</h3>
+                <div class="gallery-sub">ابریشم خالص لاجوردی با نقوش بته‌جقه و اسلیمی کهن</div>
+                <div class="gallery-footer">
+                    <span class="gallery-price">۳۲,۰۰۰,۰۰۰ تومان</span>
+                    <button class="btn-minimal" onclick="alert('✨ شال و خرقه‌ی «باغ ارم» جهت بازدید خصوصی رزرو شد.')">رزرو خرید خصوصی</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <span class="footer-brand">PARNIAN PARS</span>
+        <p style="margin-bottom: 16px;">عمارت مد، ترمه و پوشاک فاخر ابریشمی پرنیان | شیراز، بلوار ارم، عمارت شاهانه پرنیان</p>
+        <div class="footer-copy">© ۱۴۰۵ تمامی حقوق مادی و معنوی متعلق به عمارت پرنیان پارس می‌باشد. طراحی‌شده با پارادایم مینیمال و سرمقاله.</div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // 1. Tactile Fabric Magnifier Lens
+        const viewer = document.getElementById('viewer');
+        const img = document.getElementById('viewer-img');
+        const lens = document.getElementById('lens');
+
+        if (viewer && lens && img) {
+            lens.style.backgroundImage = `url('${img.src}')`;
+            lens.style.backgroundSize = `${viewer.clientWidth * 2.5}px ${viewer.clientHeight * 2.5}px`;
+
+            viewer.addEventListener('mousemove', e => {
+                const rect = viewer.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                let lensX = x - lens.offsetWidth / 2;
+                let lensY = y - lens.offsetHeight / 2;
+
+                lens.style.left = `${lensX}px`;
+                lens.style.top = `${lensY}px`;
+
+                lens.style.backgroundPosition = `-${x * 2.5 - lens.offsetWidth / 2}px -${y * 2.5 - lens.offsetHeight / 2}px`;
+            });
+        }
+
+        // 2. Interactive Persian Loom & Paisley Weaving Canvas
+        const lCanvas = document.getElementById('loom-canvas');
+        const lCtx = lCanvas.getContext('2d');
+        let weaveColorHex = '#7A1C28';
+        let step = 0;
+
+        function resizeLoom() {
+            lCanvas.width = lCanvas.parentElement.clientWidth;
+            lCanvas.height = 350;
+        }
+        window.addEventListener('resize', resizeLoom);
+        setTimeout(resizeLoom, 100);
+
+        function weaveColor(hex, btn) {
+            weaveColorHex = hex;
+            document.querySelectorAll('.thread-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            step = 0;
+        }
+
+        function drawLoom() {
+            lCtx.fillStyle = 'rgba(242, 236, 225, 0.05)';
+            lCtx.fillRect(0, 0, lCanvas.width, lCanvas.height);
+
+            const cx = lCanvas.width / 2, cy = lCanvas.height / 2;
+            step += 0.03;
+
+            lCtx.strokeStyle = weaveColorHex;
+            lCtx.lineWidth = 1.5;
+            lCtx.beginPath();
+            
+            for (let i = 0; i < 6; i++) {
+                const ang = step + (Math.PI * 2 / 6) * i;
+                const r = 80 + Math.sin(step * 2) * 40;
+                const x = cx + Math.cos(ang) * r;
+                const y = cy + Math.sin(ang) * r;
+                if (i === 0) lCtx.moveTo(x, y); else lCtx.lineTo(x, y);
+            }
+            lCtx.closePath();
+            lCtx.stroke();
+
+            // Draw center geometric mandala
+            lCtx.fillStyle = weaveColorHex;
+            lCtx.beginPath();
+            lCtx.arc(cx + Math.cos(step)*30, cy + Math.sin(step)*30, 3, 0, Math.PI * 2);
+            lCtx.fill();
+
+            requestAnimationFrame(drawLoom);
+        }
+        drawLoom();
+    </script>
+</body>
+</html>
